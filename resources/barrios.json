@@ -1,0 +1,1369 @@
+{
+  "barrios": [
+    {
+      "id": 1,
+      "municipio": "Cúcuta",
+      "nombre": "28 de Febrero"
+    },
+    {
+      "id": 2,
+      "municipio": "Cúcuta",
+      "nombre": "7 de Agosto"
+    },
+    {
+      "id": 3,
+      "municipio": "Cúcuta",
+      "nombre": "Aeropuerto"
+    },
+    {
+      "id": 4,
+      "municipio": "Cúcuta",
+      "nombre": "Aguas Calientes"
+    },
+    {
+      "id": 5,
+      "municipio": "Cúcuta",
+      "nombre": "Alcalá"
+    },
+    {
+      "id": 6,
+      "municipio": "Cúcuta",
+      "nombre": "Alfonso López"
+    },
+    {
+      "id": 7,
+      "municipio": "Cúcuta",
+      "nombre": "Aniversario 1"
+    },
+    {
+      "id": 8,
+      "municipio": "Cúcuta",
+      "nombre": "Aniversario 2"
+    },
+    {
+      "id": 9,
+      "municipio": "Cúcuta",
+      "nombre": "Antonia Santos"
+    },
+    {
+      "id": 10,
+      "municipio": "Cúcuta",
+      "nombre": "Atalaya 1 Etapa"
+    },
+    {
+      "id": 11,
+      "municipio": "Cúcuta",
+      "nombre": "Atalaya 2 Etapa"
+    },
+    {
+      "id": 12,
+      "municipio": "Cúcuta",
+      "nombre": "Belisario Betancourt"
+    },
+    {
+      "id": 13,
+      "municipio": "Cúcuta",
+      "nombre": "Bellavista"
+    },
+    {
+      "id": 14,
+      "municipio": "Cúcuta",
+      "nombre": "Belén"
+    },
+    {
+      "id": 15,
+      "municipio": "Cúcuta",
+      "nombre": "Blanco"
+    },
+    {
+      "id": 16,
+      "municipio": "Cúcuta",
+      "nombre": "Bocono"
+    },
+    {
+      "id": 17,
+      "municipio": "Cúcuta",
+      "nombre": "Bogotá"
+    },
+    {
+      "id": 18,
+      "municipio": "Cúcuta",
+      "nombre": "Brisas del Aeropuerto"
+    },
+    {
+      "id": 19,
+      "municipio": "Cúcuta",
+      "nombre": "Brisas del Norte"
+    },
+    {
+      "id": 20,
+      "municipio": "Cúcuta",
+      "nombre": "Brisas del Paraíso"
+    },
+    {
+      "id": 21,
+      "municipio": "Cúcuta",
+      "nombre": "Brisas del Porvenir"
+    },
+    {
+      "id": 22,
+      "municipio": "Cúcuta",
+      "nombre": "Buenos Aires"
+    },
+    {
+      "id": 23,
+      "municipio": "Cúcuta",
+      "nombre": "Cúcuta 75"
+    },
+    {
+      "id": 24,
+      "municipio": "Cúcuta",
+      "nombre": "Caño Fistolo"
+    },
+    {
+      "id": 25,
+      "municipio": "Cúcuta",
+      "nombre": "Callejón"
+    },
+    {
+      "id": 26,
+      "municipio": "Cúcuta",
+      "nombre": "Camilo Torres"
+    },
+    {
+      "id": 27,
+      "municipio": "Cúcuta",
+      "nombre": "Caobos"
+    },
+    {
+      "id": 28,
+      "municipio": "Cúcuta",
+      "nombre": "Carlos García Lozada"
+    },
+    {
+      "id": 29,
+      "municipio": "Cúcuta",
+      "nombre": "Carlos Pizarro"
+    },
+    {
+      "id": 30,
+      "municipio": "Cúcuta",
+      "nombre": "Carlos Ramírez París"
+    },
+    {
+      "id": 31,
+      "municipio": "Cúcuta",
+      "nombre": "Carora"
+    },
+    {
+      "id": 32,
+      "municipio": "Cúcuta",
+      "nombre": "Cecilia Castro"
+    },
+    {
+      "id": 33,
+      "municipio": "Cúcuta",
+      "nombre": "Ceiba 2"
+    },
+    {
+      "id": 34,
+      "municipio": "Cúcuta",
+      "nombre": "Cerro de La Cruz"
+    },
+    {
+      "id": 35,
+      "municipio": "Cúcuta",
+      "nombre": "Cerro Norte"
+    },
+    {
+      "id": 36,
+      "municipio": "Cúcuta",
+      "nombre": "Chapinero"
+    },
+    {
+      "id": 37,
+      "municipio": "Cúcuta",
+      "nombre": "Circunvalación"
+    },
+    {
+      "id": 38,
+      "municipio": "Cúcuta",
+      "nombre": "Ciudad Jardín"
+    },
+    {
+      "id": 39,
+      "municipio": "Cúcuta",
+      "nombre": "Claret"
+    },
+    {
+      "id": 40,
+      "municipio": "Cúcuta",
+      "nombre": "Colinas de La Victoria"
+    },
+    {
+      "id": 41,
+      "municipio": "Cúcuta",
+      "nombre": "Colsag"
+    },
+    {
+      "id": 42,
+      "municipio": "Cúcuta",
+      "nombre": "Comuneros"
+    },
+    {
+      "id": 43,
+      "municipio": "Cúcuta",
+      "nombre": "Condado de Castilla"
+    },
+    {
+      "id": 44,
+      "municipio": "Cúcuta",
+      "nombre": "Cuberos Niño"
+    },
+    {
+      "id": 45,
+      "municipio": "Cúcuta",
+      "nombre": "Cundinamarca"
+    },
+    {
+      "id": 46,
+      "municipio": "Cúcuta",
+      "nombre": "Divino Niño"
+    },
+    {
+      "id": 47,
+      "municipio": "Cúcuta",
+      "nombre": "Doña Nidia"
+    },
+    {
+      "id": 48,
+      "municipio": "Cúcuta",
+      "nombre": "El Bosque"
+    },
+    {
+      "id": 49,
+      "municipio": "Cúcuta",
+      "nombre": "El Centro"
+    },
+    {
+      "id": 50,
+      "municipio": "Cúcuta",
+      "nombre": "El Contento"
+    },
+    {
+      "id": 51,
+      "municipio": "Cúcuta",
+      "nombre": "El Higuerón"
+    },
+    {
+      "id": 52,
+      "municipio": "Cúcuta",
+      "nombre": "El Lago"
+    },
+    {
+      "id": 53,
+      "municipio": "Cúcuta",
+      "nombre": "El Llano"
+    },
+    {
+      "id": 54,
+      "municipio": "Cúcuta",
+      "nombre": "El Porvenir"
+    },
+    {
+      "id": 55,
+      "municipio": "Cúcuta",
+      "nombre": "El Progreso"
+    },
+    {
+      "id": 56,
+      "municipio": "Cúcuta",
+      "nombre": "El Rosal"
+    },
+    {
+      "id": 57,
+      "municipio": "Cúcuta",
+      "nombre": "El Salado"
+    },
+    {
+      "id": 58,
+      "municipio": "Cúcuta",
+      "nombre": "Galán"
+    },
+    {
+      "id": 59,
+      "municipio": "Cúcuta",
+      "nombre": "Govica"
+    },
+    {
+      "id": 60,
+      "municipio": "Cúcuta",
+      "nombre": "Gratamira"
+    },
+    {
+      "id": 61,
+      "municipio": "Cúcuta",
+      "nombre": "Guaimaral"
+    },
+    {
+      "id": 62,
+      "municipio": "Cúcuta",
+      "nombre": "Heliópolis"
+    },
+    {
+      "id": 63,
+      "municipio": "Cúcuta",
+      "nombre": "La Península"
+    },
+    {
+      "id": 64,
+      "municipio": "Cúcuta",
+      "nombre": "La Alameda"
+    },
+    {
+      "id": 65,
+      "municipio": "Cúcuta",
+      "nombre": "La Cabrera"
+    },
+    {
+      "id": 66,
+      "municipio": "Cúcuta",
+      "nombre": "La Capillana"
+    },
+    {
+      "id": 67,
+      "municipio": "Cúcuta",
+      "nombre": "La Carolina"
+    },
+    {
+      "id": 68,
+      "municipio": "Cúcuta",
+      "nombre": "La Castellana"
+    },
+    {
+      "id": 69,
+      "municipio": "Cúcuta",
+      "nombre": "La Ceiba"
+    },
+    {
+      "id": 70,
+      "municipio": "Cúcuta",
+      "nombre": "La Hernita"
+    },
+    {
+      "id": 71,
+      "municipio": "Cúcuta",
+      "nombre": "La Isla de La Fantasía"
+    },
+    {
+      "id": 72,
+      "municipio": "Cúcuta",
+      "nombre": "La Laguna"
+    },
+    {
+      "id": 73,
+      "municipio": "Cúcuta",
+      "nombre": "La Libertad"
+    },
+    {
+      "id": 74,
+      "municipio": "Cúcuta",
+      "nombre": "La Magdalena"
+    },
+    {
+      "id": 75,
+      "municipio": "Cúcuta",
+      "nombre": "La Merced"
+    },
+    {
+      "id": 76,
+      "municipio": "Cúcuta",
+      "nombre": "La Quinta"
+    },
+    {
+      "id": 77,
+      "municipio": "Cúcuta",
+      "nombre": "La Rinconada"
+    },
+    {
+      "id": 78,
+      "municipio": "Cúcuta",
+      "nombre": "La Riviera"
+    },
+    {
+      "id": 79,
+      "municipio": "Cúcuta",
+      "nombre": "La Sexta"
+    },
+    {
+      "id": 80,
+      "municipio": "Cúcuta",
+      "nombre": "La Unión"
+    },
+    {
+      "id": 81,
+      "municipio": "Cúcuta",
+      "nombre": "La Victoria"
+    },
+    {
+      "id": 82,
+      "municipio": "Cúcuta",
+      "nombre": "Las Almeidas"
+    },
+    {
+      "id": 83,
+      "municipio": "Cúcuta",
+      "nombre": "Las Américas"
+    },
+    {
+      "id": 84,
+      "municipio": "Cúcuta",
+      "nombre": "Las Margaritas"
+    },
+    {
+      "id": 85,
+      "municipio": "Cúcuta",
+      "nombre": "Latino"
+    },
+    {
+      "id": 86,
+      "municipio": "Cúcuta",
+      "nombre": "Libertadores"
+    },
+    {
+      "id": 87,
+      "municipio": "Cúcuta",
+      "nombre": "Lleras Restrepo"
+    },
+    {
+      "id": 88,
+      "municipio": "Cúcuta",
+      "nombre": "Loma de Bolívar"
+    },
+    {
+      "id": 89,
+      "municipio": "Cúcuta",
+      "nombre": "Los Acacios"
+    },
+    {
+      "id": 90,
+      "municipio": "Cúcuta",
+      "nombre": "Los Almendros"
+    },
+    {
+      "id": 91,
+      "municipio": "Cúcuta",
+      "nombre": "Los Laureles"
+    },
+    {
+      "id": 92,
+      "municipio": "Cúcuta",
+      "nombre": "Los Pinos"
+    },
+    {
+      "id": 93,
+      "municipio": "Cúcuta",
+      "nombre": "Luis Pérez Hernández"
+    },
+    {
+      "id": 94,
+      "municipio": "Cúcuta",
+      "nombre": "Manolo Lemus"
+    },
+    {
+      "id": 95,
+      "municipio": "Cúcuta",
+      "nombre": "María Auxiliadora"
+    },
+    {
+      "id": 96,
+      "municipio": "Cúcuta",
+      "nombre": "María Paz"
+    },
+    {
+      "id": 97,
+      "municipio": "Cúcuta",
+      "nombre": "Moretti"
+    },
+    {
+      "id": 98,
+      "municipio": "Cúcuta",
+      "nombre": "Motilones"
+    },
+    {
+      "id": 99,
+      "municipio": "Cúcuta",
+      "nombre": "Niña Ceci"
+    },
+    {
+      "id": 100,
+      "municipio": "Cúcuta",
+      "nombre": "Niza"
+    },
+    {
+      "id": 101,
+      "municipio": "Cúcuta",
+      "nombre": "Nuebo Escobal"
+    },
+    {
+      "id": 102,
+      "municipio": "Cúcuta",
+      "nombre": "Nuevo"
+    },
+    {
+      "id": 103,
+      "municipio": "Cúcuta",
+      "nombre": "Ospina Pérez"
+    },
+    {
+      "id": 104,
+      "municipio": "Cúcuta",
+      "nombre": "Palmeras"
+    },
+    {
+      "id": 105,
+      "municipio": "Cúcuta",
+      "nombre": "Pamplonita"
+    },
+    {
+      "id": 106,
+      "municipio": "Cúcuta",
+      "nombre": "Panamericano"
+    },
+    {
+      "id": 107,
+      "municipio": "Cúcuta",
+      "nombre": "Paraíso"
+    },
+    {
+      "id": 108,
+      "municipio": "Cúcuta",
+      "nombre": "Parque de Las Brisas"
+    },
+    {
+      "id": 109,
+      "municipio": "Cúcuta",
+      "nombre": "Parque Real"
+    },
+    {
+      "id": 110,
+      "municipio": "Cúcuta",
+      "nombre": "Parques Residenciales  II"
+    },
+    {
+      "id": 111,
+      "municipio": "Cúcuta",
+      "nombre": "Pescadero - Colpet"
+    },
+    {
+      "id": 112,
+      "municipio": "Cúcuta",
+      "nombre": "Policarpa"
+    },
+    {
+      "id": 113,
+      "municipio": "Cúcuta",
+      "nombre": "Popular"
+    },
+    {
+      "id": 114,
+      "municipio": "Cúcuta",
+      "nombre": "Portachuelo"
+    },
+    {
+      "id": 115,
+      "municipio": "Cúcuta",
+      "nombre": "Próceres Urapanes"
+    },
+    {
+      "id": 116,
+      "municipio": "Cúcuta",
+      "nombre": "Prados 1"
+    },
+    {
+      "id": 117,
+      "municipio": "Cúcuta",
+      "nombre": "Prados 2"
+    },
+    {
+      "id": 118,
+      "municipio": "Cúcuta",
+      "nombre": "Prados Club"
+    },
+    {
+      "id": 119,
+      "municipio": "Cúcuta",
+      "nombre": "Prados del Este"
+    },
+    {
+      "id": 120,
+      "municipio": "Cúcuta",
+      "nombre": "Prados del Norte"
+    },
+    {
+      "id": 121,
+      "municipio": "Cúcuta",
+      "nombre": "Primavera"
+    },
+    {
+      "id": 122,
+      "municipio": "Cúcuta",
+      "nombre": "Páramo"
+    },
+    {
+      "id": 123,
+      "municipio": "Cúcuta",
+      "nombre": "Pueblo Nuevo"
+    },
+    {
+      "id": 124,
+      "municipio": "Cúcuta",
+      "nombre": "Puente Barco"
+    },
+    {
+      "id": 125,
+      "municipio": "Cúcuta",
+      "nombre": "Quinta Bosh"
+    },
+    {
+      "id": 126,
+      "municipio": "Cúcuta",
+      "nombre": "Quinta Oriental"
+    },
+    {
+      "id": 127,
+      "municipio": "Cúcuta",
+      "nombre": "Quinta Vélez"
+    },
+    {
+      "id": 128,
+      "municipio": "Cúcuta",
+      "nombre": "Rafael Núñez"
+    },
+    {
+      "id": 129,
+      "municipio": "Cúcuta",
+      "nombre": "Rincón de Los Prados"
+    },
+    {
+      "id": 130,
+      "municipio": "Cúcuta",
+      "nombre": "Rosal del Norte"
+    },
+    {
+      "id": 131,
+      "municipio": "Cúcuta",
+      "nombre": "Rudesindo Soto"
+    },
+    {
+      "id": 132,
+      "municipio": "Cúcuta",
+      "nombre": "San Eduardo"
+    },
+    {
+      "id": 133,
+      "municipio": "Cúcuta",
+      "nombre": "San José"
+    },
+    {
+      "id": 134,
+      "municipio": "Cúcuta",
+      "nombre": "San Luis"
+    },
+    {
+      "id": 135,
+      "municipio": "Cúcuta",
+      "nombre": "San Mateo"
+    },
+    {
+      "id": 136,
+      "municipio": "Cúcuta",
+      "nombre": "San Miguel"
+    },
+    {
+      "id": 137,
+      "municipio": "Cúcuta",
+      "nombre": "San Rafael"
+    },
+    {
+      "id": 138,
+      "municipio": "Cúcuta",
+      "nombre": "Santa Ana"
+    },
+    {
+      "id": 139,
+      "municipio": "Cúcuta",
+      "nombre": "Santa Clara"
+    },
+    {
+      "id": 140,
+      "municipio": "Cúcuta",
+      "nombre": "Santa Helena"
+    },
+    {
+      "id": 141,
+      "municipio": "Cúcuta",
+      "nombre": "Santa Lucía"
+    },
+    {
+      "id": 142,
+      "municipio": "Cúcuta",
+      "nombre": "Santa Teresita"
+    },
+    {
+      "id": 143,
+      "municipio": "Cúcuta",
+      "nombre": "Santander"
+    },
+    {
+      "id": 144,
+      "municipio": "Cúcuta",
+      "nombre": "Santo Domingo"
+    },
+    {
+      "id": 145,
+      "municipio": "Cúcuta",
+      "nombre": "Sevilla"
+    },
+    {
+      "id": 146,
+      "municipio": "Cúcuta",
+      "nombre": "Simón Bolívar II"
+    },
+    {
+      "id": 147,
+      "municipio": "Cúcuta",
+      "nombre": "Tasajero"
+    },
+    {
+      "id": 148,
+      "municipio": "Cúcuta",
+      "nombre": "Terranova"
+    },
+    {
+      "id": 149,
+      "municipio": "Cúcuta",
+      "nombre": "Toledo Plata"
+    },
+    {
+      "id": 150,
+      "municipio": "Cúcuta",
+      "nombre": "Torcoroma"
+    },
+    {
+      "id": 151,
+      "municipio": "Cúcuta",
+      "nombre": "Tucunare"
+    },
+    {
+      "id": 152,
+      "municipio": "Cúcuta",
+      "nombre": "Urbanización Bellavista"
+    },
+    {
+      "id": 153,
+      "municipio": "Cúcuta",
+      "nombre": "Urbanización La Ceiba"
+    },
+    {
+      "id": 154,
+      "municipio": "Cúcuta",
+      "nombre": "Urbanización Las Américas"
+    },
+    {
+      "id": 155,
+      "municipio": "Cúcuta",
+      "nombre": "Urbanización Loma Linda"
+    },
+    {
+      "id": 156,
+      "municipio": "Cúcuta",
+      "nombre": "Urbanización San José"
+    },
+    {
+      "id": 157,
+      "municipio": "Cúcuta",
+      "nombre": "Urbanización San Martín"
+    },
+    {
+      "id": 158,
+      "municipio": "Cúcuta",
+      "nombre": "Urbanización San Martín 2"
+    },
+    {
+      "id": 159,
+      "municipio": "Cúcuta",
+      "nombre": "Valle Esther"
+    },
+    {
+      "id": 160,
+      "municipio": "Cúcuta",
+      "nombre": "Valparaíso Suit"
+    },
+    {
+      "id": 161,
+      "municipio": "Cúcuta",
+      "nombre": "Viejo Escobal"
+    },
+    {
+      "id": 162,
+      "municipio": "Cúcuta",
+      "nombre": "Villa Camila"
+    },
+    {
+      "id": 163,
+      "municipio": "Cúcuta",
+      "nombre": "Villas de Las Américas"
+    },
+    {
+      "id": 164,
+      "municipio": "Cúcuta",
+      "nombre": "Villas de San Diego"
+    },
+    {
+      "id": 165,
+      "municipio": "Cúcuta",
+      "nombre": "Virgilio Barco"
+    },
+    {
+      "id": 166,
+      "municipio": "Cúcuta",
+      "nombre": "Zulima"
+    },
+    {
+      "id": 167,
+      "municipio": "Patios",
+      "nombre": "Urbanización Juana Paula"
+    },
+    {
+      "id": 168,
+      "municipio": "Patios",
+      "nombre": "Urbanización Bella Vista"
+    },
+    {
+      "id": 169,
+      "municipio": "Patios",
+      "nombre": "Urbanización Santa Clara"
+    },
+    {
+      "id": 170,
+      "municipio": "Patios",
+      "nombre": "Urbanización La Arboleda"
+    },
+    {
+      "id": 171,
+      "municipio": "Patios",
+      "nombre": "Urbanización Videlso"
+    },
+    {
+      "id": 172,
+      "municipio": "Patios",
+      "nombre": "Urb. Miradores del Pamplonita"
+    },
+    {
+      "id": 173,
+      "municipio": "Patios",
+      "nombre": "Urb. El Portal de Los Patios"
+    },
+    {
+      "id": 174,
+      "municipio": "Patios",
+      "nombre": "Urbanización San Fernando"
+    },
+    {
+      "id": 175,
+      "municipio": "Patios",
+      "nombre": "Urbanización Pensilvania"
+    },
+    {
+      "id": 176,
+      "municipio": "Patios",
+      "nombre": "Urbanización Montebello I"
+    },
+    {
+      "id": 177,
+      "municipio": "Patios",
+      "nombre": "Urbanización Montebello II"
+    },
+    {
+      "id": 178,
+      "municipio": "Patios",
+      "nombre": "Urbanización Betania"
+    },
+    {
+      "id": 179,
+      "municipio": "Patios",
+      "nombre": "Urbanización Brisas del Llano"
+    },
+    {
+      "id": 180,
+      "municipio": "Patios",
+      "nombre": "Urbanización Valles del Mirador"
+    },
+    {
+      "id": 181,
+      "municipio": "Patios",
+      "nombre": "Urbanización Villa Esperanza"
+    },
+    {
+      "id": 182,
+      "municipio": "Patios",
+      "nombre": "Barrio  Santa Ana"
+    },
+    {
+      "id": 183,
+      "municipio": "Patios",
+      "nombre": "Urbanización Villa Celina"
+    },
+    {
+      "id": 184,
+      "municipio": "Patios",
+      "nombre": "Urbanización Daniel Jordán"
+    },
+    {
+      "id": 185,
+      "municipio": "Patios",
+      "nombre": "Urbanización Llano Grande"
+    },
+    {
+      "id": 186,
+      "municipio": "Patios",
+      "nombre": "Barrio Tierra Linda"
+    },
+    {
+      "id": 187,
+      "municipio": "Patios",
+      "nombre": "Barrio Los Colorados"
+    },
+    {
+      "id": 188,
+      "municipio": "Patios",
+      "nombre": "Barrio Patio Antiguo"
+    },
+    {
+      "id": 189,
+      "municipio": "Patios",
+      "nombre": "Barrio Kilómetro Ocho"
+    },
+    {
+      "id": 190,
+      "municipio": "Patios",
+      "nombre": "Barrio Pisarreal"
+    },
+    {
+      "id": 191,
+      "municipio": "Patios",
+      "nombre": "Barrio Altamira"
+    },
+    {
+      "id": 192,
+      "municipio": "Patios",
+      "nombre": "Barrio Llanitos"
+    },
+    {
+      "id": 193,
+      "municipio": "Patios",
+      "nombre": "Barrio Kilómetro Nueve"
+    },
+    {
+      "id": 194,
+      "municipio": "Patios",
+      "nombre": "Barrio El Mirador"
+    },
+    {
+      "id": 195,
+      "municipio": "Patios",
+      "nombre": "Barrio La Esperanza"
+    },
+    {
+      "id": 196,
+      "municipio": "Patios",
+      "nombre": "Barrio El Sol"
+    },
+    {
+      "id": 197,
+      "municipio": "Patios",
+      "nombre": "Barrio Las Cumbres"
+    },
+    {
+      "id": 198,
+      "municipio": "Patios",
+      "nombre": "Barrio San Francisco de Asís"
+    },
+    {
+      "id": 199,
+      "municipio": "Patios",
+      "nombre": "Barrio Once de Noviembre"
+    },
+    {
+      "id": 200,
+      "municipio": "Patios",
+      "nombre": "Barrio Tasajero"
+    },
+    {
+      "id": 201,
+      "municipio": "Patios",
+      "nombre": "Barrio Bonito"
+    },
+    {
+      "id": 202,
+      "municipio": "Patios",
+      "nombre": "Barrio Chaparral"
+    },
+    {
+      "id": 203,
+      "municipio": "Patios",
+      "nombre": "Barrio Santa Rosa de Lima"
+    },
+    {
+      "id": 204,
+      "municipio": "Patios",
+      "nombre": "Barrio La Cordialidad"
+    },
+    {
+      "id": 205,
+      "municipio": "Patios",
+      "nombre": "Barrio Juana Paula"
+    },
+    {
+      "id": 206,
+      "municipio": "Patios",
+      "nombre": "Barrio Doce de Octubre"
+    },
+    {
+      "id": 207,
+      "municipio": "Patios",
+      "nombre": "Barrio La Sabana"
+    },
+    {
+      "id": 208,
+      "municipio": "Patios",
+      "nombre": "Barrio Patios Centro"
+    },
+    {
+      "id": 209,
+      "municipio": "Patios",
+      "nombre": "Sector San Carlos"
+    },
+    {
+      "id": 210,
+      "municipio": "Patios",
+      "nombre": "Vereda El Suspiro - Agualinda"
+    },
+    {
+      "id": 211,
+      "municipio": "Patios",
+      "nombre": "Pinar del Rio"
+    },
+    {
+      "id": 212,
+      "municipio": "Patios",
+      "nombre": "Parque cementerio"
+    },
+    {
+      "id": 213,
+      "municipio": "Patios",
+      "nombre": "Vereda Corozal"
+    },
+    {
+      "id": 214,
+      "municipio": "Patios",
+      "nombre": "Vereda Los Colchones"
+    },
+    {
+      "id": 215,
+      "municipio": "Patios",
+      "nombre": "Vereda  Helechal Bajo"
+    },
+    {
+      "id": 216,
+      "municipio": "Patios",
+      "nombre": "Vereda Helechal Alto"
+    },
+    {
+      "id": 217,
+      "municipio": "Patios",
+      "nombre": "Vereda La Mutis"
+    },
+    {
+      "id": 218,
+      "municipio": "Patios",
+      "nombre": "Vereda Veinte de Julio"
+    },
+    {
+      "id": 219,
+      "municipio": "Patios",
+      "nombre": "Vereda Villas del Corozal"
+    },
+    {
+      "id": 220,
+      "municipio": "Patios",
+      "nombre": "Corregimiento La Garita"
+    },
+    {
+      "id": 221,
+      "municipio": "Patios",
+      "nombre": "Agrupación Agrícola California"
+    },
+    {
+      "id": 222,
+      "municipio": "Patios",
+      "nombre": "Urbanización  Villa    Mallerli"
+    },
+    {
+      "id": 223,
+      "municipio": "Patios",
+      "nombre": "Urb. Villa Verde"
+    },
+    {
+      "id": 224,
+      "municipio": "Patios",
+      "nombre": "Urb.  La Campiña"
+    },
+    {
+      "id": 225,
+      "municipio": "Patios",
+      "nombre": "Barrio Pinar del Rio"
+    },
+    {
+      "id": 226,
+      "municipio": "Villa del Rosario",
+      "nombre": "Montevideo"
+    },
+    {
+      "id": 227,
+      "municipio": "Villa del Rosario",
+      "nombre": "Lomitas"
+    },
+    {
+      "id": 228,
+      "municipio": "Villa del Rosario",
+      "nombre": "las pampas"
+    },
+    {
+      "id": 229,
+      "municipio": "Villa del Rosario",
+      "nombre": "La Esperanza"
+    },
+    {
+      "id": 230,
+      "municipio": "Villa del Rosario",
+      "nombre": "20 de Julio"
+    },
+    {
+      "id": 231,
+      "municipio": "Villa del Rosario",
+      "nombre": "San Gregorio"
+    },
+    {
+      "id": 232,
+      "municipio": "Villa del Rosario",
+      "nombre": "Santander"
+    },
+    {
+      "id": 233,
+      "municipio": "Villa del Rosario",
+      "nombre": "Antonio Nariño"
+    },
+    {
+      "id": 234,
+      "municipio": "Villa del Rosario",
+      "nombre": "Villa Antigua"
+    },
+    {
+      "id": 235,
+      "municipio": "Villa del Rosario",
+      "nombre": "El centro"
+    },
+    {
+      "id": 236,
+      "municipio": "Villa del Rosario",
+      "nombre": "El Paramo"
+    },
+    {
+      "id": 237,
+      "municipio": "Villa del Rosario",
+      "nombre": "Primero de Mayo"
+    },
+    {
+      "id": 238,
+      "municipio": "Villa del Rosario",
+      "nombre": "La Palmita"
+    },
+    {
+      "id": 239,
+      "municipio": "Villa del Rosario",
+      "nombre": "Gran Colombia"
+    },
+    {
+      "id": 240,
+      "municipio": "Villa del Rosario",
+      "nombre": "La Parada"
+    },
+    {
+      "id": 241,
+      "municipio": "Villa del Rosario",
+      "nombre": "Fatima"
+    },
+    {
+      "id": 242,
+      "municipio": "Villa del Rosario",
+      "nombre": "Bellavista"
+    },
+    {
+      "id": 243,
+      "municipio": "Villa del Rosario",
+      "nombre": "Piedecuesta"
+    },
+    {
+      "id": 244,
+      "municipio": "Villa del Rosario",
+      "nombre": "Gramalote"
+    },
+    {
+      "id": 245,
+      "municipio": "Villa del Rosario",
+      "nombre": "Turbay Ayala"
+    },
+    {
+      "id": 246,
+      "municipio": "Villa del Rosario",
+      "nombre": "San Martin"
+    },
+    {
+      "id": 247,
+      "municipio": "Villa del Rosario",
+      "nombre": "Santa Barbara"
+    },
+    {
+      "id": 248,
+      "municipio": "Villa del Rosario",
+      "nombre": "San Judas Tadeo"
+    },
+    {
+      "id": 249,
+      "municipio": "Villa del Rosario",
+      "nombre": "San Jose"
+    },
+    {
+      "id": 250,
+      "municipio": "Villa del Rosario",
+      "nombre": "Sendero de Paz"
+    },
+    {
+      "id": 251,
+      "municipio": "Villa del Rosario",
+      "nombre": "U. Las Margaritas"
+    },
+    {
+      "id": 252,
+      "municipio": "Villa del Rosario",
+      "nombre": "U. El Cuji"
+    },
+    {
+      "id": 253,
+      "municipio": "Villa del Rosario",
+      "nombre": "U. El Trapiche I"
+    },
+    {
+      "id": 254,
+      "municipio": "Villa del Rosario",
+      "nombre": "U. El Trapiche II"
+    },
+    {
+      "id": 255,
+      "municipio": "Villa del Rosario",
+      "nombre": "U. Villas de Santander"
+    },
+    {
+      "id": 256,
+      "municipio": "Villa del Rosario",
+      "nombre": "U. Monaco"
+    },
+    {
+      "id": 257,
+      "municipio": "Villa del Rosario",
+      "nombre": "U.Villas de Sevilla"
+    },
+    {
+      "id": 258,
+      "municipio": "Villa del Rosario",
+      "nombre": "U.Campo Verde"
+    },
+    {
+      "id": 259,
+      "municipio": "Villa del Rosario",
+      "nombre": "U. San Martin"
+    },
+    {
+      "id": 260,
+      "municipio": "Villa del Rosario",
+      "nombre": "U. Las Palmas"
+    },
+    {
+      "id": 261,
+      "municipio": "Villa del Rosario",
+      "nombre": "U. El Palmar"
+    },
+    {
+      "id": 262,
+      "municipio": "Villa del Rosario",
+      "nombre": "U. Tamarindo"
+    },
+    {
+      "id": 263,
+      "municipio": "Villa del Rosario",
+      "nombre": "U. Videlso"
+    },
+    {
+      "id": 264,
+      "municipio": "Villa del Rosario",
+      "nombre": "U. Pueblito Español"
+    },
+    {
+      "id": 265,
+      "municipio": "Villa del Rosario",
+      "nombre": "U. Tamacoa"
+    },
+    {
+      "id": 266,
+      "municipio": "Villa del Rosario",
+      "nombre": "U. Altos del Tamarindo"
+    },
+    {
+      "id": 267,
+      "municipio": "Villa del Rosario",
+      "nombre": "U. Colinas de Vista Hermosa"
+    },
+    {
+      "id": 268,
+      "municipio": "Villa del Rosario",
+      "nombre": "Villa Graciela"
+    },
+    {
+      "id": 269,
+      "municipio": "Villa del Rosario",
+      "nombre": "Portal de los Alcazeres"
+    },
+    {
+      "id": 270,
+      "municipio": "San Antonio del Tachira - Venezuela",
+      "nombre": "San Antonio del Tachira"
+    },
+    {
+      "id": 271,
+      "municipio": "Pedro Maria Ureña - Venezuela",
+      "nombre": "Pedro Maria Ureña"
+    },
+    {
+      "id": 272,
+      "municipio": "Cúcuta",
+      "nombre": "La playa"
+    },
+    {
+      "id": 273,
+      "municipio": "Cúcuta",
+      "nombre": "Urba. Bellavista"
+    }
+  ]
+}
