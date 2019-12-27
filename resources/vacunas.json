@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "nombre": "Parvovirosis",
+    "descripcion": "",
+    "composicion": "",
+    "para_adulto": false,
+    "para_cachorro": true,
+    "grupo_vacuna":[{"id":1}]
+  },
+  {
+    "id": 2,
+    "nombre": "Parvovirosis+Coronavirosis",
+    "descripcion": "",
+    "composicion": "",
+    "para_adulto": false,
+    "para_cachorro": true,
+    "grupo_vacuna":[{"id":1}]
+  },
+  {
+    "id": 3,
+    "nombre": "Parvovirosis+Coronavirosis+Moquillo",
+    "descripcion": "",
+    "composicion": "",
+    "para_adulto": false,
+    "para_cachorro": true,
+    "grupo_vacuna":[{"id":1}]
+  },
+  {
+    "id": 4,
+    "nombre": "Triple",
+    "descripcion": "",
+    "composicion": "Moquillo, Hepatitis, Leptospirosis",
+    "para_adulto": false,
+    "para_cachorro": true,
+    "grupo_vacuna":[{"id":2}]
+  },
+  {
+    "id": 5,
+    "nombre": "Pentavalente",
+    "descripcion": "",
+    "composicion": "Moquillo, Hepatitis, Leptospirosis, Parvovirosis, Coronavirosis, Parainfluenza",
+    "para_adulto": false,
+    "para_cachorro": true,
+    "grupo_vacuna":[{"id":3}]
+  },
+  {
+    "id": 6,
+    "nombre": "Hexavalente",
+    "descripcion": "",
+    "composicion": "Moquillo, Hepatitis, Leptospirosis, Parvovirosis, Coronavirosis, Parainfluenza, Rabia",
+    "para_adulto": true,
+    "para_cachorro": true,
+    "grupo_vacuna":[{"id":4}, {"id":5}]
+  },
+  {
+    "id": 7,
+    "nombre": "Pentavalente",
+    "descripcion": "",
+    "composicion": "Clamidia, Rinotraqueitis, Calicivirus, Panleucopenia, Leucemia",
+    "para_adulto": false,
+    "para_cachorro": true,
+    "grupo_vacuna":[{"id":6}]
+  },
+  {
+    "id": 8,
+    "nombre": "Pentavalente+Rabia",
+    "descripcion": "",
+    "composicion": "Clamidia, Rinotraqueitis, Calicivirus, Panleucopenia, Leucemia, Rabia",
+    "para_adulto": true,
+    "para_cachorro": true,
+    "grupo_vacuna":[{"id":7}, {"id":8}]
+  }
+]

@@ -20,7 +20,7 @@ func FindById(c echo.Context) error {
 		pqErr := (result.Error).(*pq.Error)
 		fmt.Printf("code :%s , : message: %s , type: %s", pqErr.Code, pqErr.Message, pqErr.Code.Class().Name())
 	}
-	var cliente models.Cliente
+	var cliente models.Tercero
 	db.Model(&mascota).Related(&cliente)
 
 	return c.JSON(http.StatusOK, map[string]interface{}{

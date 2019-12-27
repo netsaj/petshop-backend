@@ -10,12 +10,13 @@ import (
 )
 
 func Create(c echo.Context) error {
-	var cliente models.Cliente
+	var cliente models.Tercero
 	c.Bind(&cliente)
 	if err := c.Validate(&cliente); err != nil {
 		return c.JSON(http.StatusBadRequest, utils.ErrorToMap(err))
 	}
 	db := database.GetConnection()
+	cliente.IsCliente = true
 	defer db.Close()
 	spew.Print(&cliente)
 	if result := db.Create(&cliente); result.Error != nil {

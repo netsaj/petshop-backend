@@ -1,0 +1,42 @@
+[
+  {
+    "id" : 1,
+    "nombre": "Cachorro - 1½ mes a 12 meses",
+    "especie": "Perro"
+  },
+  {
+    "id" : 2,
+    "nombre": "Cachorro - 2 meses",
+    "especie": "Perro"
+  },
+  {
+    "id" : 3,
+    "nombre": "Cachorro - 2½ meses",
+    "especie": "Perro"
+  },
+  {
+    "id" : 4,
+    "nombre": "Cachorro - 3 meses",
+    "especie": "Perro"
+  },
+  {
+    "id" : 5,
+    "nombre": "Adulto",
+    "especie": "Perro"
+  },
+  {
+    "id" : 6,
+    "nombre": "Neonato y Cachorro - hasta 2 meses",
+    "especie": "Gato"
+  },
+  {
+    "id" : 7,
+    "nombre": "Cachorro - 3 meses o mas",
+    "especie": "Gato"
+  },
+  {
+    "id" : 8,
+    "nombre": "Adulto",
+    "especie": "Gato"
+  }
+]

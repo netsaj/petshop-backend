@@ -2,8 +2,8 @@ package utils
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
+	"github.com/davecgh/go-spew/spew"
 	"github.com/go-playground/locales"
 	ES "github.com/go-playground/locales/es"
 	ut "github.com/go-playground/universal-translator"
@@ -36,6 +36,15 @@ func New() *CustomValidator {
 	return &CustomValidator{Validator: validate}
 }
 
+type ValidatorError struct {
+	error
+	Message map[string]interface{}
+}
+
+func (ve ValidatorError) Error() string {
+	return spew.Sprint(ve.Message)
+}
+
 func (cv *CustomValidator) Validate(i interface{}) error {
 	if err := cv.Validator.Struct(i); err != nil {
 		errs := err.(validator.ValidationErrors)
@@ -46,8 +55,9 @@ func (cv *CustomValidator) Validate(i interface{}) error {
 		}
 		e, _ := json.Marshal(translateErrors)
 		fmt.Println(string(e))
-
-		return errors.New(string(e))
+		var message map[string]interface{}
+		json.Unmarshal([]byte(e), &message)
+		return ValidatorError{Message: message}
 	}
 	return nil
 }

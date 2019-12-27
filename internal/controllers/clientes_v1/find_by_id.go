@@ -11,7 +11,7 @@ import (
 
 func FindByID(c echo.Context) error {
 	ID := c.Param("id")
-	var cliente models.Cliente
+	var cliente models.Tercero
 	db := database.GetConnection()
 	defer db.Close()
 	if result := db.Model(&cliente).Where("id = ?", &ID).Find(&cliente); result.Error != nil {

@@ -21,7 +21,7 @@ func Search(c echo.Context) error {
 	db := database.GetConnection()
 	defer db.Close()
 	var mascotas []models.Mascota
-	fmt.Println(db.Model(&models.Mascota{}).Preload("Cliente").Find(&mascotas, query).QueryExpr())
+	fmt.Println(db.Model(&models.Mascota{}).Preload("Tercero").Find(&mascotas, query).QueryExpr())
 	return c.JSON(200, map[string]interface{}{
 		"count":    len(mascotas),
 		"mascotas": &mascotas,

@@ -2,18 +2,31 @@ package utils
 
 import (
 	"fmt"
+	"github.com/davecgh/go-spew/spew"
 	"github.com/jinzhu/gorm"
 	"github.com/labstack/echo"
 	"github.com/lib/pq"
 	"net/http"
+	"reflect"
 )
 
-var c echo.Context
+func ReturnError(err error, c echo.Context) error {
+	code, body := ErrorHandler(err)
+	return c.JSON(code, body)
+}
 
 func ErrorHandler(err error) (int, map[string]interface{}) {
-	switch err.(type) {
+	fmt.Println(reflect.TypeOf(err))
+	fmt.Println(reflect.TypeOf(&echo.HTTPError{}))
+	fmt.Println(err)
+	switch reflect.TypeOf(err.Error()) {
+	case reflect.TypeOf(ValidatorError{}):
+		{
+			print("entre por validateError")
+			return http.StatusUnprocessableEntity, err.(ValidatorError).Message
+		}
 	// si el error es de tipo pq (Postgres)
-	case *pq.Error:
+	case reflect.TypeOf(pq.Error{}):
 		{
 			fmt.Printf("POSTGRESQL ERROR CODE: %v : %s \n", err.(*pq.Error).Code.Name(), err.(*pq.Error).Message)
 			fmt.Println(err.(*pq.Error).Code.Name(), err.(*pq.Error).Where)
@@ -28,11 +41,19 @@ func ErrorHandler(err error) (int, map[string]interface{}) {
 			}
 		}
 	// si el error es de gorm (a nivel de ORM)
-	case *gorm.Errors:
+	case reflect.TypeOf(gorm.Errors{}):
 		return http.StatusPreconditionFailed, map[string]interface{}{
 			"error": err.Error(),
 		}
 	default:
-		return http.StatusInternalServerError, nil
+		if "*echo.HTTPError" == fmt.Sprint(reflect.TypeOf(err)) {
+			httpError := err.(*echo.HTTPError)
+			return httpError.Code, map[string]interface{}{
+				"error": spew.Sdump(httpError.Message),
+			}
+		}
+		return http.StatusInternalServerError, map[string]interface{}{
+			"error": err.Error(),
+		}
 	}
 }

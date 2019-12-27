@@ -29,9 +29,10 @@ func GetConnection() *gorm.DB {
 	dbClient, err := gorm.Open(
 		"postgres",
 		DbUri)
-
 	if err != nil {
-		panic(fmt.Sprintf("failed connect to database: %s" , err))
+		panic(fmt.Sprintf("failed connect to database: %s", err))
 	}
+	// Enable Logger, show detailed log
+	dbClient.LogMode(true)
 	return dbClient
 }

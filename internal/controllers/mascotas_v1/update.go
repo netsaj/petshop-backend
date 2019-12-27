@@ -17,7 +17,7 @@ func Update(c echo.Context) error {
 	db := database.GetConnection()
 	defer db.Close()
 
-	if result := db.Update(&mascota).Preload("Cliente").Find(&mascota); result.Error != nil {
+	if result := db.Update(&mascota).Preload("Tercero").Find(&mascota); result.Error != nil {
 		code, body := utils.ErrorHandler(result.Error)
 		return c.JSON(code, body)
 	}

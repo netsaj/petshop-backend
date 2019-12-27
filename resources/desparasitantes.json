@@ -1,0 +1,210 @@
+[
+  {
+    "id": 1,
+    "nombre": "Randel puppy",
+    "descripcion": " 1 ML  / Kg",
+    "composicion": "",
+    "para_adultos": false,
+    "para_cachorros": true,
+    "tipo": "Liquido",
+    "grupos_desparasitante": [{"id": 1}]
+  },
+  {
+    "id": 2,
+    "nombre": "Novacan cachorros",
+    "descripcion": " 1 ML  / Kg",
+    "composicion": "",
+    "para_adultos": false,
+    "para_cachorros": true,
+    "tipo": "Liquido",
+    "grupos_desparasitante": [{"id": 1}]
+  },
+  {
+    "id": 3,
+    "nombre": "Total FCG (Coccidias-Giardias)",
+    "descripcion": " 1 ML  / Kg",
+    "composicion": "",
+    "para_adultos": false,
+    "para_cachorros": true,
+    "tipo": "Liquido",
+    "grupos_desparasitante": [{"id": 1}]
+  },
+  {
+    "id": 4,
+    "nombre": "Rondel",
+    "descripcion": " 1 ML  / Kg",
+    "composicion": "",
+    "para_adultos": true,
+    "para_cachorros": true,
+    "tipo": "Liquido",
+    "grupos_desparasitante": [{"id": 2}]
+  },
+  {
+    "id": 5,
+    "nombre": "Netecan",
+    "descripcion": " 1 ML  / Kg",
+    "composicion": "",
+    "para_adultos": true,
+    "para_cachorros": true,
+    "tipo": "Liquido",
+    "grupos_desparasitante": [{"id": 2}]
+  },
+  {
+    "id": 6,
+    "nombre": "Pracangold",
+    "descripcion": " 1 ML  / Kg",
+    "composicion": "",
+    "para_adultos": true,
+    "para_cachorros": true,
+    "tipo": "Liquido",
+    "grupos_desparasitante": [{"id": 2}]
+  },
+  {
+    "id": 7,
+    "nombre": "Paracanis",
+    "descripcion": " 1 ML  / Kg",
+    "composicion": "",
+    "para_adultos": true,
+    "para_cachorros": true,
+    "tipo": "Liquido",
+    "grupos_desparasitante": [{"id": 2}]
+  },{
+  "id": 8,
+  "nombre": "Canicel",
+  "descripcion": " 1 ML  / Kg",
+  "composicion": "",
+  "para_adultos": true,
+  "para_cachorros": true,
+  "tipo": "Liquido",
+  "grupos_desparasitante": [{"id": 2}]
+},{
+  "id": 9,
+  "nombre": "Novacan",
+  "descripcion": " 1 ML  / Kg",
+  "composicion": "",
+  "para_adultos": true,
+  "para_cachorros": true,
+  "tipo": "Liquido",
+  "grupos_desparasitante": [{"id": 2}]
+},{
+  "id": 10,
+  "nombre": "Petsantel",
+  "descripcion": " 1 ML  / Kg",
+  "composicion": "",
+  "para_adultos": true,
+  "para_cachorros": true,
+  "tipo": "Liquido",
+  "grupos_desparasitante": [{"id": 2}]
+},
+  {
+    "id": 11,
+    "nombre": "Netox",
+    "descripcion": " 1 ML  / Kg",
+    "composicion": "",
+    "para_adultos": true,
+    "para_cachorros": true,
+    "tipo": "Liquido",
+    "grupos_desparasitante": [{"id": 2}]
+  },
+  {
+    "id": 12,
+    "nombre": "Vermiplex",
+    "descripcion": " 1 ML  / Kg",
+    "composicion": "",
+    "para_adultos": true,
+    "para_cachorros": true,
+    "tipo": "Liquido",
+    "grupos_desparasitante": [{"id": 2}]
+  },
+  {
+    "id": 13,
+    "nombre": "Canicat",
+    "descripcion": " 1 ML  / Kg",
+    "composicion": "",
+    "para_adultos": true,
+    "para_cachorros": true,
+    "tipo": "Liquido",
+    "grupos_desparasitante": [{"id": 2}]
+  },
+  {
+    "id": 14,
+    "nombre": "Can_best",
+    "descripcion": " 1 ML  / Kg",
+    "composicion": "",
+    "para_adultos": true,
+    "para_cachorros": true,
+    "tipo": "Liquido",
+    "grupos_desparasitante": [{"id": 2}]
+  },
+  {
+    "id": 15,
+    "nombre": "Total F",
+    "descripcion": " Según empaque",
+    "composicion": "",
+    "para_adultos": true,
+    "para_cachorros": true,
+    "tipo": "Tableta",
+    "grupos_desparasitante": [{"id": 2}]
+  },
+  {
+    "id": 16,
+    "nombre": "Teniblan",
+    "descripcion": " Según empaque",
+    "composicion": "",
+    "para_adultos": true,
+    "para_cachorros": true,
+    "tipo": "Tableta",
+    "grupos_desparasitante": [{"id": 2}]
+  },
+  {
+    "id": 17,
+    "nombre": "Drontal",
+    "descripcion": " Según empaque",
+    "composicion": "",
+    "para_adultos": true,
+    "para_cachorros": true,
+    "tipo": "Tableta",
+    "grupos_desparasitante": [{"id": 2}]
+  },
+  {
+    "id": 18,
+    "nombre": "Endogard",
+    "descripcion": " Según empaque",
+    "composicion": "",
+    "para_adultos": true,
+    "para_cachorros": true,
+    "tipo": "Tableta",
+    "grupos_desparasitante": [{"id": 2}]
+  },
+  {
+    "id": 19,
+    "nombre": "Parasikan",
+    "descripcion": " 1 ML  / Kg",
+    "composicion": "",
+    "para_adultos": true,
+    "para_cachorros": true,
+    "tipo": "Liquido",
+    "grupos_desparasitante": [{"id": 2}]
+  },
+  {
+    "id": 20,
+    "nombre": "Canipet's",
+    "descripcion": " 1 ML  / Kg",
+    "composicion": "",
+    "para_adultos": true,
+    "para_cachorros": true,
+    "tipo": "Liquido",
+    "grupos_desparasitante": [{"id": 2}]
+  },
+  {
+    "id": 21,
+    "nombre": "Canipet's Fort",
+    "descripcion": " 1 ML  / Kg",
+    "composicion": "",
+    "para_adultos": true,
+    "para_cachorros": true,
+    "tipo": "Liquido",
+    "grupos_desparasitante": [{"id": 2}]
+  }
+
+]

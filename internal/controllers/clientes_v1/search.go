@@ -10,7 +10,7 @@ import (
 )
 
 type searchResult struct {
-	clientes []models.Cliente
+	clientes []models.Tercero
 }
 
 func Search(c echo.Context) error {
@@ -38,17 +38,17 @@ func Search(c echo.Context) error {
 		if len(where) > 0 {
 			where += " AND "
 		}
-		where += "( clientes.nombre ILIKE  '%" + q + "%' or CAST(clientes.cedula as TEXT) ILIKE  '%" + q + "%' or clientes.telefono ILIKE  '%" + q + "%' or clientes.celular ILIKE  '%" + q + "%' or clientes.direccion ILIKE  '%" + q + "%' or clientes.barrio ILIKE  '%" + q + "%' or clientes.email ILIKE  '%" + q + "%' )"
+		where += "( terceros.nombre ILIKE  '%" + q + "%' or CAST(terceros.cedula as TEXT) ILIKE  '%" + q + "%' or terceros.telefono ILIKE  '%" + q + "%' or terceros.celular ILIKE  '%" + q + "%' or terceros.direccion ILIKE  '%" + q + "%' or terceros.barrio ILIKE  '%" + q + "%' or terceros.email ILIKE  '%" + q + "%' )"
 	}
 	db := database.GetConnection()
 	defer db.Close()
 	var mascotas []models.Mascota
 	var count int
-	query := db.Model(mascotas).Joins("left join clientes on clientes.id = mascotas.cliente_id").Where(where)
+	query := db.Model(mascotas).Joins("left join terceros on terceros.id = mascotas.tercero_id").Where(where)
 	query.Count(&count)
 	fmt.Printf("resultados para la busqueda: %v \n", count)
 	fmt.Printf("pagina: %v - Tamaño: %v ", page, size)
-	query.Preload("Cliente").Offset(offset).Limit(size).Find(&mascotas)
+	query.Preload("Tercero").Offset(offset).Limit(size).Find(&mascotas)
 	return c.JSON(200, map[string]interface{}{
 		"count":     len(mascotas),
 		"resultado": &mascotas,

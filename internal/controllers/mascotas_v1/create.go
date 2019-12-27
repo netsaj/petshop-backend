@@ -17,7 +17,7 @@ func Create(c echo.Context) error {
 	db := database.GetConnection()
 	defer db.Close()
 
-	if result := db.Save(&mascota).Preload("Cliente").Find(&mascota); result.Error != nil {
+	if result := db.Save(&mascota).Preload("Tercero").Find(&mascota); result.Error != nil {
 		code, body := utils.ErrorHandler(result.Error)
 		return c.JSON(code, body)
 	}
