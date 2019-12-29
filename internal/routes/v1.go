@@ -7,6 +7,7 @@ import (
 	"github/netsaj/petshop-backend/internal/controllers/barrios_v1"
 	"github/netsaj/petshop-backend/internal/controllers/calendario_v1"
 	"github/netsaj/petshop-backend/internal/controllers/clientes_v1"
+	"github/netsaj/petshop-backend/internal/controllers/desparasitantes_v1"
 	"github/netsaj/petshop-backend/internal/controllers/mascotas_v1"
 	"github/netsaj/petshop-backend/internal/controllers/servicios_v1"
 	"github/netsaj/petshop-backend/internal/controllers/vacunas_v1"
@@ -44,6 +45,11 @@ func V1(e *echo.Echo) {
 	gruposVacunas := vacunas.Group("/grupos")
 	gruposVacunas.GET("", vacunas_v1.ListarGrupoVacunas)
 	gruposVacunas.POST("", vacunas_v1.CrearGrupoVacuna)
+
+	// desparasitantes
+	desparasitantes := v1.Group("/desparasitantes")
+	gruposDesparasitantes := desparasitantes.Group("/grupos")
+	gruposDesparasitantes.GET("", desparasitantes_v1.ListarGrupos)
 
 	// documentos
 	documentos := v1.Group("/documentos")

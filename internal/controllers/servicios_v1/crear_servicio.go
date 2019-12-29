@@ -2,13 +2,15 @@ package servicios_v1
 
 import (
 	"fmt"
+	"net/http"
+
 	"github.com/davecgh/go-spew/spew"
 	"github.com/labstack/echo"
 	uuid "github.com/satori/go.uuid"
+
 	"github/netsaj/petshop-backend/internal/database"
 	"github/netsaj/petshop-backend/internal/database/models"
 	"github/netsaj/petshop-backend/internal/utils"
-	"net/http"
 )
 
 type Servicio struct {
@@ -17,8 +19,9 @@ type Servicio struct {
 	MascotaID uuid.UUID `json:"mascota_id" validate:"required"`
 	UsuarioID uuid.UUID `json:"usuario_id" validate:"required"`
 
-	Peluqueria models.Peluqueria `json:"peluqueria" validate:"omitempty"`
-	Vacunacion models.Vacunacion `json:"vacunacion" validate:"omitempty"`
+	Peluqueria      models.Peluqueria      `json:"peluqueria" validate:"omitempty"`
+	Vacunacion      models.Vacunacion      `json:"vacunacion" validate:"omitempty"`
+	Desparasitacion models.Desparasitacion `json:"desparasitacion" validate:"omitempty"`
 }
 
 func NuevoServicio(c echo.Context) error {
@@ -41,6 +44,7 @@ func NuevoServicio(c echo.Context) error {
 	documento.UsuarioID = servicio.UsuarioID
 	documento.Peluqueria = servicio.Peluqueria
 	documento.Vacunacion = servicio.Vacunacion
+	documento.Desparasitacion = servicio.Desparasitacion
 
 	if err := documento.CrearDocumentoServicio(); err != nil {
 		return utils.ReturnError(err, c)

@@ -138,3 +138,59 @@ func prefijoDefault() {
 
 	}
 }
+
+func agregarGruposDesparasitantes() {
+	db := database.GetConnection()
+	defer db.Close()
+	var count int
+	db.Model(&models.GrupoDesparasitante{}).Count(&count)
+	if count == 0 {
+		// struct for load `GrupoDesparacitante`
+		var data []models.GrupoDesparasitante
+		// we initialize our Users array
+		if err := utils.LoadFileJSON(filepath.FromSlash(filepath.FromSlash("resources/grupo_desparasitantes.json")), &data); err != nil {
+			panic(err)
+		}
+		fmt.Printf("Grupos encontrados en el archivo: %v", len(data))
+		bar := pb.StartNew(len(data))
+		defer bar.Finish()
+		for i := 0; i < len(data); i++ {
+			db.Create(&data[i])
+			bar.Increment()
+			time.Sleep(time.Millisecond)
+		}
+		db.Model(&models.GrupoVacuna{}).Count(&count)
+
+	}
+	fmt.Printf("Total de grupos de desparasitantes: %v \n", count)
+}
+
+func agregarDesparasitantes() {
+	db := database.GetConnection()
+	defer db.Close()
+	var count int
+	db.Model(&models.Desparasitante{}).Count(&count)
+	if count == 0 {
+		// struct for load `barrios`
+		var data []models.Desparasitante
+		// we initialize our Users array
+		if err := utils.LoadFileJSON(filepath.FromSlash(filepath.FromSlash("resources/desparasitantes.json")), &data); err != nil {
+			panic(err)
+		}
+		fmt.Printf("Vacunas encontradas en el archivo: %v", len(data))
+		bar := pb.StartNew(len(data))
+		defer bar.Finish()
+		for i := 0; i < len(data); i++ {
+			for j := 0; j < len(data[i].GruposDesparasitante); j++ {
+				id := data[i].GruposDesparasitante[j].ID
+				db.First(&data[i].GruposDesparasitante[j], "id = ?", id)
+			}
+			db.Model(&models.Desparasitante{}).Save(&data[i])
+			bar.Increment()
+			time.Sleep(time.Millisecond)
+		}
+		db.Model(&models.Desparasitante{}).Count(&count)
+
+	}
+	fmt.Printf("Total de Desparasitante: %v \n", count)
+}

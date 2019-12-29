@@ -13,14 +13,20 @@ func createTables() {
 		&models.Usuario{},
 		&models.Tercero{},
 		&models.Mascota{},
+
+		// listado de vacunas
 		&models.GrupoVacuna{},
 		&models.Vacuna{},
+		// listado de desparasitante
+		&models.GrupoDesparasitante{},
+		&models.Desparasitante{},
 
 		// manejo de documentos generados (servicios,...)
 		&models.Prefijo{},
 		&models.Documento{},
 		&models.Peluqueria{},
 		&models.Vacunacion{},
+		&models.Desparasitacion{},
 
 		// CRM (calendario, ...)
 		&models.Calendario{},
