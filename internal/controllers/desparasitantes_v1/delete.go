@@ -10,18 +10,19 @@ import (
 	"github/netsaj/petshop-backend/internal/utils"
 )
 
-func ListarGrupos(c echo.Context) error {
+func Delete(c echo.Context) error {
+	ID := c.Param("id")
 	db := database.GetConnection()
-	var gruposDesparasitantes []models.GrupoDesparasitante
-
-	if result := db.Model(&gruposDesparasitantes).
-		Preload("Desparasitantes").
-		Order("nombre asc").
-		Find(&gruposDesparasitantes); result.Error != nil {
+	defer db.Close()
+	var desparasitante models.Desparasitante
+	if result := db.Find(&desparasitante, "id = ?", ID); result.Error != nil {
 		return utils.ReturnError(result.Error, c)
 	}
-
+	if result := db.Delete(&desparasitante); result.Error != nil {
+		return utils.ReturnError(result.Error, c)
+	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"grupos": gruposDesparasitantes,
+		"deleted":        true,
+		"desparasitante": desparasitante,
 	})
 }

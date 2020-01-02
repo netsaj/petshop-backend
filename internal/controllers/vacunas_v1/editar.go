@@ -1,8 +1,8 @@
 package vacunas_v1
 
 import (
+	"fmt"
 	"net/http"
-	"time"
 
 	"github.com/labstack/echo"
 
@@ -11,12 +11,9 @@ import (
 	"github/netsaj/petshop-backend/internal/utils"
 )
 
-func CrearVacuna(c echo.Context) error {
+func Update(c echo.Context) error {
 	var vacuna models.Vacuna
 	if err := c.Bind(&vacuna); err != nil {
-		return utils.ReturnError(err, c)
-	}
-	if err := c.Validate(&vacuna); err != nil {
 		return utils.ReturnError(err, c)
 	}
 	db := database.GetConnection()
@@ -25,8 +22,27 @@ func CrearVacuna(c echo.Context) error {
 		id := vacuna.GrupoVacuna[j].ID
 		db.First(&vacuna.GrupoVacuna[j], "id = ?", id)
 	}
-	vacuna.ID = uint(int32(time.Now().Unix()))
-	if result := db.Preload("GrupoVacuna").Save(&vacuna); result.Error != nil {
+	db.Exec(fmt.Sprintf("delete from grupos_vacuna_vacunas where vacuna_id = %d",vacuna.ID))
+	if result := db.Save(&vacuna); result.Error != nil {
+		return utils.ReturnError(result.Error, c)
+	}
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"vacuna": vacuna,
+	})
+}
+
+func Copy(c echo.Context) error {
+	var vacuna models.Vacuna
+	if err := c.Bind(&vacuna); err != nil {
+		return utils.ReturnError(err, c)
+	}
+	db := database.GetConnection()
+	defer db.Close()
+	for j := 0; j < len(vacuna.GrupoVacuna); j++ {
+		id := vacuna.GrupoVacuna[j].ID
+		db.First(&vacuna.GrupoVacuna[j], "id = ?", id)
+	}
+	if result := db.Save(&vacuna); result.Error != nil {
 		return utils.ReturnError(result.Error, c)
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{

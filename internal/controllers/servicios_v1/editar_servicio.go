@@ -14,12 +14,13 @@ import (
 )
 
 type EditarServicio struct {
-	ID        uuid.UUID `json:"id"`
-	Prefijo   uuid.UUID `json:"prefijo_id"`
-	Numero    uint32    `json:"numero"`
-	TerceroID uuid.UUID `json:"tercero_id" validate:"required"`
-	MascotaID uuid.UUID `json:"mascota_id" validate:"required"`
-	UsuarioID uuid.UUID `json:"usuario_id" validate:"required"`
+	ID                uuid.UUID `json:"id"`
+	Prefijo           uuid.UUID `json:"prefijo_id"`
+	Numero            uint32    `json:"numero"`
+	TerceroID         uuid.UUID `json:"tercero_id" validate:"required"`
+	MascotaID         uuid.UUID `json:"mascota_id" validate:"required"`
+	UsuarioID         uuid.UUID `json:"usuario_id" validate:"required"`
+	ServicioTerminado bool      `json:"servicio_terminado"`
 
 	Peluqueria      models.Peluqueria      `json:"peluqueria" validate:"omitempty"`
 	Vacunacion      models.Vacunacion      `json:"vacunacion" validate:"omitempty"`
@@ -43,6 +44,7 @@ func EditarUnServicio(c echo.Context) error {
 	documento.ID = servicio.ID
 	documento.PrefijoID = servicio.Prefijo
 	documento.Numero = servicio.Numero
+	documento.ServicioTerminado = servicio.ServicioTerminado
 	documento.TerceroID = servicio.TerceroID
 	documento.MascotaID = servicio.MascotaID
 	documento.UsuarioID = servicio.UsuarioID
@@ -56,6 +58,5 @@ func EditarUnServicio(c echo.Context) error {
 	spew.Println(documento)
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"documento": &documento,
-		
 	})
 }

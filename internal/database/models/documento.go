@@ -20,14 +20,15 @@ type DocumentoError struct {
 
 type Documento struct {
 	Base
-	PrefijoID uuid.UUID `gorm:"not null" json:"prefijo_id"`
-	Numero    uint32    `gorm:"not null" json:"numero" validate:"gte=0"`
-	TerceroID uuid.UUID `gorm:"not null" json:"tercero_id"`
-	MascotaID uuid.UUID `gorm:"not null" json:"mascota_id"`
-	UsuarioID uuid.UUID `gorm:"not null" json:"usuario_id"`
-	Tipo      string    `gorm:"not null", json:"tipo"`
-	Subtipo   string    `gorm:"not null" json:"subtipo"`
-	Total     float64   `gorm:"not null;default:0" json:"total"`
+	PrefijoID         uuid.UUID `gorm:"not null" json:"prefijo_id"`
+	Numero            uint32    `gorm:"not null" json:"numero" validate:"gte=0"`
+	TerceroID         uuid.UUID `gorm:"not null" json:"tercero_id"`
+	MascotaID         uuid.UUID `gorm:"not null" json:"mascota_id"`
+	UsuarioID         uuid.UUID `gorm:"not null" json:"usuario_id"`
+	Tipo              string    `gorm:"not null", json:"tipo"`
+	Subtipo           string    `gorm:"not null" json:"subtipo"`
+	Total             float64   `gorm:"not null;default:0" json:"total"`
+	ServicioTerminado bool      `gorm:"not null;default:false" json:"servicio_terminado"`
 
 	// agregaciones
 	Prefijo         Prefijo         `validate:"-" gorm:"foreignkey:PrefijoID" json:"prefijo,omitempty"`
@@ -82,6 +83,7 @@ func (d *Documento) CrearDocumentoServicio() error {
 	if reflect.DeepEqual(d.Peluqueria, Peluqueria{}) {
 		fmt.Println("ignorando Peluqueria, estructura vacía")
 	} else {
+		d.Peluqueria.Terminado = d.ServicioTerminado
 		db.Save(&d.Peluqueria)
 		var calendario = new(Calendario)
 		calendario.FechaAgendada = time.Now().Add(time.Duration(time.Hour * 24 * 60))
@@ -95,6 +97,7 @@ func (d *Documento) CrearDocumentoServicio() error {
 	if reflect.DeepEqual(d.Vacunacion, Vacunacion{}) {
 		fmt.Println("ignorando Vacunacion, estructura vacía")
 	} else {
+		d.Vacunacion.Terminado = d.ServicioTerminado
 		db.Save(&d.Vacunacion).Preload("Vacuna").Find(&d.Vacunacion)
 		var calendario = new(Calendario)
 		calendario.FechaAgendada = d.Vacunacion.Revacunacion
@@ -109,9 +112,10 @@ func (d *Documento) CrearDocumentoServicio() error {
 	if reflect.DeepEqual(d.Desparasitacion, Desparasitacion{}) {
 		fmt.Println("ignorando desparasitacion, estructura vacía")
 	} else {
+		d.Desparasitacion.Terminado = d.ServicioTerminado
 		db.Save(&d.Desparasitacion).Preload("Desparasitante").Find(&d.Desparasitacion)
 		var calendario = new(Calendario)
-		calendario.FechaAgendada = d.Vacunacion.Revacunacion
+		calendario.FechaAgendada = d.Desparasitacion.Redesparacitacion
 		calendario.Tipo = "Desparasitación"
 		calendario.TerceroID = d.TerceroID
 		calendario.MascotaID = d.MascotaID

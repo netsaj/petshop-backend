@@ -2,15 +2,17 @@ package migrations
 
 import (
 	"fmt"
-	"github.com/cheggaaa/pb/v3"
-	"github.com/davecgh/go-spew/spew"
-	uuid "github.com/satori/go.uuid"
-	"github/netsaj/petshop-backend/internal/database"
-	"github/netsaj/petshop-backend/internal/database/models"
-	"github/netsaj/petshop-backend/internal/utils"
 	"math"
 	"path/filepath"
 	"time"
+
+	"github.com/cheggaaa/pb/v3"
+	"github.com/davecgh/go-spew/spew"
+	uuid "github.com/satori/go.uuid"
+
+	"github/netsaj/petshop-backend/internal/database"
+	"github/netsaj/petshop-backend/internal/database/models"
+	"github/netsaj/petshop-backend/internal/utils"
 )
 
 func createAdminIfNotExist() {
@@ -125,8 +127,9 @@ func prefijoDefault() {
 	var prefijo models.Prefijo
 	if db.First(&prefijo, "id = ?", models.PREFIJO_DEFAULT).RecordNotFound() {
 		prefijo.ID = uuid.FromStringOrNil(models.PREFIJO_DEFAULT)
-		prefijo.Nombre = "Prefijo por defecto"
-		prefijo.Descripcion = "Prefijo creado por defecto"
+		prefijo.Nombre = "Prefijo servicios"
+		prefijo.Codigo = "SV"
+		prefijo.Descripcion = "Prefijo creado por defecto para los servicios."
 		prefijo.Inicio = 1
 		prefijo.Fin = math.MaxInt32
 		prefijo.Actual = 1

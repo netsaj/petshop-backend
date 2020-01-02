@@ -1,4 +1,4 @@
-package desparasitantes_v1
+package vacunas_v1
 
 import (
 	"net/http"
@@ -10,18 +10,19 @@ import (
 	"github/netsaj/petshop-backend/internal/utils"
 )
 
-func ListarGrupos(c echo.Context) error {
+func Delete(c echo.Context) error {
+	ID := c.Param("id")
 	db := database.GetConnection()
-	var gruposDesparasitantes []models.GrupoDesparasitante
-
-	if result := db.Model(&gruposDesparasitantes).
-		Preload("Desparasitantes").
-		Order("nombre asc").
-		Find(&gruposDesparasitantes); result.Error != nil {
+	defer db.Close()
+	var vacuna models.Vacuna
+	if result := db.Find(&vacuna, "id = ?", ID); result.Error != nil {
 		return utils.ReturnError(result.Error, c)
 	}
-
+	if result := db.Delete(&vacuna); result.Error != nil {
+		return utils.ReturnError(result.Error, c)
+	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"grupos": gruposDesparasitantes,
+		"deleted": true,
+		"vacuna":  vacuna,
 	})
 }

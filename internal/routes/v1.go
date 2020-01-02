@@ -24,6 +24,10 @@ func V1(e *echo.Echo) {
 	// barrios
 	barrios := v1.Group("/barrios")
 	barrios.GET("", barrios_v1.Search)
+	barrios.POST("", barrios_v1.Create)
+	barrios.PUT("", barrios_v1.Create)
+	barrios.DELETE("/:id", barrios_v1.Delete)
+
 	// clientes
 	clientes := v1.Group("/clientes")
 	clientes.GET("", clientes_v1.Search)
@@ -41,6 +45,9 @@ func V1(e *echo.Echo) {
 	// vacunas
 	vacunas := v1.Group("/vacunas")
 	vacunas.POST("", vacunas_v1.CrearVacuna)
+	vacunas.DELETE("/:id", vacunas_v1.Delete)
+	vacunas.PUT("", vacunas_v1.Update)
+
 	// vacunas - rutas para los grupos de vacunas
 	gruposVacunas := vacunas.Group("/grupos")
 	gruposVacunas.GET("", vacunas_v1.ListarGrupoVacunas)
@@ -48,6 +55,9 @@ func V1(e *echo.Echo) {
 
 	// desparasitantes
 	desparasitantes := v1.Group("/desparasitantes")
+	desparasitantes.POST("", desparasitantes_v1.Create)
+	desparasitantes.DELETE("/:id", desparasitantes_v1.Delete)
+	desparasitantes.PUT("", desparasitantes_v1.Update)
 	gruposDesparasitantes := desparasitantes.Group("/grupos")
 	gruposDesparasitantes.GET("", desparasitantes_v1.ListarGrupos)
 
@@ -58,10 +68,13 @@ func V1(e *echo.Echo) {
 	servicios.POST("", servicios_v1.NuevoServicio)
 	servicios.PUT("", servicios_v1.EditarUnServicio)
 	servicios.GET("", servicios_v1.ListarServiciosActivos)
+	servicios.GET("/all", servicios_v1.ListarServicios)
 	servicios.GET("/:id", servicios_v1.FindByID)
 	servicios.GET("/contar", servicios_v1.ContarServicios)
 
 	// calendario
 	calendario := v1.Group("/calendarios")
 	calendario.GET("/pendientes", calendario_v1.ConsultarPendientes)
+	calendario.GET("/historial", calendario_v1.ConsultarHistorial)
+	calendario.POST("/cerrar", calendario_v1.CerrarCalendario)
 }

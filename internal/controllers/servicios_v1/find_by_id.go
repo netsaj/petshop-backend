@@ -30,7 +30,7 @@ func FindByID(c echo.Context) error {
 		Preload("Mascota").
 		Preload("Prefijo").
 		Where("documentos.tipo = 'venta' and documentos.subtipo = 'servicio' and " +
-			"((peluqueadas.id != '00000000-0000-0000-0000-000000000000' AND peluqueadas.terminado = false) OR (vacunaciones.id != '00000000-0000-0000-0000-000000000000' and vacunaciones.terminado = false) OR (desparasitaciones.id != '00000000-0000-0000-0000-000000000000' and desparasitaciones.terminado = false)) ")
+			"((peluqueadas.id != '00000000-0000-0000-0000-000000000000') OR (vacunaciones.id != '00000000-0000-0000-0000-000000000000') OR (desparasitaciones.id != '00000000-0000-0000-0000-000000000000')) ")
 
 	var documento models.Documento
 	if result := query.First(&documento, "documentos.id =?", id); result.Error != nil {
