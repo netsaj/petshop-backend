@@ -18,7 +18,7 @@ func GetLoggedUser(c echo.Context) error {
 	defer db.Close()
 
 	var usuario models.Usuario
-	if result := db.Where("id = ?", id).First(&usuario); result.Error != nil {
+	if result := db.First(&usuario,"id = ?", id); result.Error != nil {
 		fmt.Print(result.Error.Error())
 		return echo.ErrUnauthorized
 	}

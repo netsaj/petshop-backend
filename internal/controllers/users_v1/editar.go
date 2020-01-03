@@ -1,6 +1,8 @@
 package users_v1
 
 import (
+	"net/http"
+
 	"github.com/labstack/echo"
 
 	"github/netsaj/petshop-backend/internal/database"
@@ -8,19 +10,17 @@ import (
 	"github/netsaj/petshop-backend/internal/utils"
 )
 
-func Create(c echo.Context) error {
-	var user models.Usuario
-	if err := c.Bind(&user); err != nil {
+func Update(c echo.Context) error {
+	var usuario models.Usuario
+	if err := c.Bind(&usuario); err != nil {
 		return utils.ReturnError(err, c)
 	}
 	db := database.GetConnection()
 	defer db.Close()
-	user.SetPassword(user.Password)
-	if result := db.Save(&user); result.Error != nil {
+	if result := db.Save(&usuario); result.Error != nil {
 		return utils.ReturnError(result.Error, c)
 	}
-	return c.JSON(201, map[string]interface{}{
-		"user": &user,
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"usuario": usuario,
 	})
-
 }

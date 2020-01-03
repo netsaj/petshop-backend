@@ -2,11 +2,13 @@ package clientes_v1
 
 import (
 	"fmt"
-	"github.com/labstack/echo"
-	"github/netsaj/petshop-backend/internal/database"
-	"github/netsaj/petshop-backend/internal/database/models"
 	"strconv"
 	"strings"
+
+	"github.com/labstack/echo"
+
+	"github/netsaj/petshop-backend/internal/database"
+	"github/netsaj/petshop-backend/internal/database/models"
 )
 
 type searchResult struct {
@@ -32,19 +34,24 @@ func Search(c echo.Context) error {
 	// calculamos el offset a partir de la pagina y el tamaño
 	offset := page * size
 
-	criteria := c.QueryParam("q")
 	where := ""
-	for _, q := range strings.Split(criteria, " ") {
-		if len(where) > 0 {
-			where += " AND "
+	criteria := c.QueryParam("q")
+	if len(criteria) > 0 {
+		for _, q := range strings.Split(criteria, " ") {
+			if len(where) > 0 {
+				where += " AND "
+			}
+			where += "( terceros.nombre ILIKE  '%" + q + "%' or CAST(terceros.cedula as TEXT) ILIKE  '%" + q + "%' or terceros.telefono ILIKE  '%" + q + "%' or terceros.celular ILIKE  '%" + q + "%' or terceros.direccion ILIKE  '%" + q + "%' or terceros.barrio ILIKE  '%" + q + "%' or terceros.email ILIKE  '%" + q + "%' )"
 		}
-		where += "( terceros.nombre ILIKE  '%" + q + "%' or CAST(terceros.cedula as TEXT) ILIKE  '%" + q + "%' or terceros.telefono ILIKE  '%" + q + "%' or terceros.celular ILIKE  '%" + q + "%' or terceros.direccion ILIKE  '%" + q + "%' or terceros.barrio ILIKE  '%" + q + "%' or terceros.email ILIKE  '%" + q + "%' )"
 	}
 	db := database.GetConnection()
 	defer db.Close()
 	var mascotas []models.Mascota
 	var count int
-	query := db.Model(mascotas).Joins("left join terceros on terceros.id = mascotas.tercero_id").Where(where)
+	query := db.Model(mascotas).Joins("left join terceros on terceros.id = mascotas.tercero_id")
+	if where != "" {
+		query = query.Where(where)
+	}
 	query.Count(&count)
 	fmt.Printf("resultados para la busqueda: %v \n", count)
 	fmt.Printf("pagina: %v - Tamaño: %v ", page, size)

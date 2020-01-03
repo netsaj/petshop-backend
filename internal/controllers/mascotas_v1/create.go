@@ -12,7 +12,7 @@ func Create(c echo.Context) error {
 	var mascota models.Mascota
 	c.Bind(&mascota)
 	if err := c.Validate(&mascota); err != nil {
-		return c.JSON(http.StatusBadRequest, utils.ErrorToMap(err))
+		return utils.ReturnError(err, c)
 	}
 	db := database.GetConnection()
 	defer db.Close()

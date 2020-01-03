@@ -3,12 +3,14 @@ package utils
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/davecgh/go-spew/spew"
 	"github.com/go-playground/locales"
 	ES "github.com/go-playground/locales/es"
 	ut "github.com/go-playground/universal-translator"
-	es_translation "github/netsaj/petshop-backend/internal/utils/translations/es"
 	"gopkg.in/go-playground/validator.v9"
+
+	es_translation "github/netsaj/petshop-backend/internal/utils/translations/es"
 )
 
 var (
@@ -38,7 +40,7 @@ func New() *CustomValidator {
 
 type ValidatorError struct {
 	error
-	Message map[string]interface{}
+	Message string
 }
 
 func (ve ValidatorError) Error() string {
@@ -55,9 +57,13 @@ func (cv *CustomValidator) Validate(i interface{}) error {
 		}
 		e, _ := json.Marshal(translateErrors)
 		fmt.Println(string(e))
-		var message map[string]interface{}
+		var message map[string]string
 		json.Unmarshal([]byte(e), &message)
-		return ValidatorError{Message: message}
+		msg := ""
+		for key, value := range message {
+			msg += fmt.Sprintf("%s : %v \n", key, value)
+		}
+		return ValidatorError{Message: msg}
 	}
 	return nil
 }

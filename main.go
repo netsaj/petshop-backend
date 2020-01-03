@@ -42,5 +42,8 @@ func main() {
 		AllowOrigins: []string{"*"},
 		AllowMethods: []string{http.MethodGet, http.MethodPut, http.MethodPost, http.MethodDelete},
 	}))
-	e.Logger.Fatal(e.Start(":3000"))
+	e.GET("/", func(c echo.Context) error{
+		return c.HTML(http.StatusOK, "Server is running...")
+	})
+	e.Logger.Fatal(e.Start("0.0.0.0:3000"))
 }

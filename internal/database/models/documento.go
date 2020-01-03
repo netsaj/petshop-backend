@@ -85,7 +85,8 @@ func (d *Documento) CrearDocumentoServicio() error {
 	} else {
 		d.Peluqueria.Terminado = d.ServicioTerminado
 		db.Save(&d.Peluqueria)
-		var calendario = new(Calendario)
+		var calendario Calendario
+		db.Find(&calendario, "tipo = 'Peluquería' and documento_id = ?", d.ID)
 		calendario.FechaAgendada = time.Now().Add(time.Duration(time.Hour * 24 * 60))
 		calendario.Tipo = "Peluquería"
 		calendario.TerceroID = d.TerceroID
@@ -99,7 +100,8 @@ func (d *Documento) CrearDocumentoServicio() error {
 	} else {
 		d.Vacunacion.Terminado = d.ServicioTerminado
 		db.Save(&d.Vacunacion).Preload("Vacuna").Find(&d.Vacunacion)
-		var calendario = new(Calendario)
+		var calendario  Calendario
+		db.Find(&calendario, "tipo = 'Vacunación' and documento_id = ?", d.ID)
 		calendario.FechaAgendada = d.Vacunacion.Revacunacion
 		calendario.Tipo = "Vacunación"
 		calendario.TerceroID = d.TerceroID
@@ -114,7 +116,8 @@ func (d *Documento) CrearDocumentoServicio() error {
 	} else {
 		d.Desparasitacion.Terminado = d.ServicioTerminado
 		db.Save(&d.Desparasitacion).Preload("Desparasitante").Find(&d.Desparasitacion)
-		var calendario = new(Calendario)
+		var calendario Calendario
+		db.Find(&calendario, "tipo = 'Desparasitación' and documento_id = ?", d.ID)
 		calendario.FechaAgendada = d.Desparasitacion.Redesparacitacion
 		calendario.Tipo = "Desparasitación"
 		calendario.TerceroID = d.TerceroID

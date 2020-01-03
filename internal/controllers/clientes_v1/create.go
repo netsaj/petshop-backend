@@ -13,7 +13,7 @@ func Create(c echo.Context) error {
 	var cliente models.Tercero
 	c.Bind(&cliente)
 	if err := c.Validate(&cliente); err != nil {
-		return c.JSON(http.StatusBadRequest, utils.ErrorToMap(err))
+		return utils.ReturnError(err, c)
 	}
 	db := database.GetConnection()
 	cliente.IsCliente = true

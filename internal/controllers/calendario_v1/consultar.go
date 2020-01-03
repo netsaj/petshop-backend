@@ -1,7 +1,9 @@
 package calendario_v1
 
 import (
+	"fmt"
 	"net/http"
+	"strconv"
 	"strings"
 	"time"
 
@@ -30,6 +32,22 @@ func ConsultarPendientes(c echo.Context) error {
 }
 
 func ConsultarHistorial(c echo.Context) error {
+	page := 0
+	size := 10
+	if param := c.QueryParam("page"); param != "" { // recupero la pagina de la peticion, si no viene definida dejo la pagina en 1
+		fmt.Printf("page: %v", param)
+		if x, e := strconv.Atoi(param); e == nil {
+			page = x - 1
+		}
+	}
+	if param := c.QueryParam("size"); param != "" { // reviso el numero de elementos por pagina
+		fmt.Printf("page: %v", param)
+		if x, e := strconv.Atoi(param); e == nil {
+			size = x
+		}
+	}
+	// calculamos el offset a partir de la pagina y el tamaño
+	offset := page * size // calculo el offset de la paginanacion.
 	db := database.GetConnection()
 	defer db.Close()
 	var calendarios []models.Calendario
@@ -66,12 +84,18 @@ func ConsultarHistorial(c echo.Context) error {
 		fechaF := strings.Split(fechaFinal, "T")[0]
 		query = query.Where(" DATE(calendarios.fecha_agendada) <= ? ", fechaF)
 	}
-
-	if result := query.
+	var count uint
+	if result := query.Count(&count); result.Error != nil {
+		return utils.ReturnError(result.Error, c)
+	}
+	if result := query.Limit(size).Offset(offset).
 		Find(&calendarios); result.Error != nil {
 		return utils.ReturnError(result.Error, c)
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"calendarios": calendarios,
+		"total":       count,
+		"page":        (page + 1),
+		"size":        size,
 	})
 }

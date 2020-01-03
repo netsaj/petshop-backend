@@ -2,12 +2,13 @@ package utils
 
 import (
 	"fmt"
+	"net/http"
+	"reflect"
+
 	"github.com/davecgh/go-spew/spew"
 	"github.com/jinzhu/gorm"
 	"github.com/labstack/echo"
 	"github.com/lib/pq"
-	"net/http"
-	"reflect"
 )
 
 func ReturnError(err error, c echo.Context) error {
@@ -17,16 +18,19 @@ func ReturnError(err error, c echo.Context) error {
 
 func ErrorHandler(err error) (int, map[string]interface{}) {
 	fmt.Println(reflect.TypeOf(err))
+	fmt.Println(reflect.TypeOf(err) == reflect.TypeOf(&pq.Error{}))
 	fmt.Println(reflect.TypeOf(&echo.HTTPError{}))
 	fmt.Println(err)
-	switch reflect.TypeOf(err.Error()) {
+	switch reflect.TypeOf(err) {
 	case reflect.TypeOf(ValidatorError{}):
 		{
 			print("entre por validateError")
-			return http.StatusUnprocessableEntity, err.(ValidatorError).Message
+			return http.StatusUnprocessableEntity, map[string]interface{}{
+				"error": err.(ValidatorError).Message,
+			}
 		}
 	// si el error es de tipo pq (Postgres)
-	case reflect.TypeOf(pq.Error{}):
+	case reflect.TypeOf(&pq.Error{}):
 		{
 			fmt.Printf("POSTGRESQL ERROR CODE: %v : %s \n", err.(*pq.Error).Code.Name(), err.(*pq.Error).Message)
 			fmt.Println(err.(*pq.Error).Code.Name(), err.(*pq.Error).Where)

@@ -10,6 +10,7 @@ import (
 	"github/netsaj/petshop-backend/internal/controllers/desparasitantes_v1"
 	"github/netsaj/petshop-backend/internal/controllers/mascotas_v1"
 	"github/netsaj/petshop-backend/internal/controllers/servicios_v1"
+	"github/netsaj/petshop-backend/internal/controllers/users_v1"
 	"github/netsaj/petshop-backend/internal/controllers/vacunas_v1"
 	"github/netsaj/petshop-backend/internal/middleware"
 )
@@ -19,7 +20,7 @@ func V1(e *echo.Echo) {
 
 	auth := v1.Group("/auth")
 	auth.POST("/login", auth_v1.Login)
-	auth.GET("/user", auth_v1.GetLoggedUser, middleware.CustomJwtMiddleware(), middleware.ValidateAdminMiddleware())
+	auth.GET("/user", auth_v1.GetLoggedUser, middleware.CustomJwtMiddleware(), middleware.ValidateStandardUserMiddleware())
 
 	// barrios
 	barrios := v1.Group("/barrios")
@@ -77,4 +78,11 @@ func V1(e *echo.Echo) {
 	calendario.GET("/pendientes", calendario_v1.ConsultarPendientes)
 	calendario.GET("/historial", calendario_v1.ConsultarHistorial)
 	calendario.POST("/cerrar", calendario_v1.CerrarCalendario)
+
+	// usuarios
+	usuarios := v1.Group("/usuarios")
+	usuarios.GET("", users_v1.List)
+	usuarios.POST("", users_v1.Create)
+	usuarios.DELETE("/:id", users_v1.Delete)
+	usuarios.PUT("", users_v1.Update)
 }
