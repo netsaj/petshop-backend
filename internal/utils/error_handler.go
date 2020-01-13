@@ -18,7 +18,7 @@ func ReturnError(err error, c echo.Context) error {
 
 func ErrorHandler(err error) (int, map[string]interface{}) {
 	fmt.Println(reflect.TypeOf(err))
-	fmt.Println(reflect.TypeOf(err) == reflect.TypeOf(&pq.Error{}))
+	fmt.Println(reflect.TypeOf(err) == reflect.TypeOf(&echo.HTTPError{}))
 	fmt.Println(reflect.TypeOf(&echo.HTTPError{}))
 	fmt.Println(err)
 	switch reflect.TypeOf(err) {
@@ -52,6 +52,11 @@ func ErrorHandler(err error) (int, map[string]interface{}) {
 	default:
 		if "*echo.HTTPError" == fmt.Sprint(reflect.TypeOf(err)) {
 			httpError := err.(*echo.HTTPError)
+			if err.Error() == "" {
+				return http.StatusBadRequest , map[string]interface{}{
+					"error": "No se ha subido ningún archivo al servidor.",
+				}
+			}
 			return httpError.Code, map[string]interface{}{
 				"error": spew.Sdump(httpError.Message),
 			}

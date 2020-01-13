@@ -62,7 +62,8 @@ func ConsultarHistorial(c echo.Context) error {
 		Preload("Tercero").
 		Preload("Mascota").
 		Preload("Documento").
-		Preload("UsuarioCierre")
+		Preload("UsuarioCierre").
+		Order("calendarios.created_at desc")
 
 	criteria := c.QueryParam("q")
 	where := "" // wuere adicional para filtrar si llega un criterio de busqueda.

@@ -50,7 +50,10 @@ func ListarServicios(c echo.Context) error {
 		Joins("left join terceros on terceros.id = documentos.tercero_id").
 		Joins("left join mascotas on mascotas.id = documentos.mascota_id").
 		Joins("left join prefijos on prefijos.id = documentos.prefijo_id").
+		Joins("left join examenes_laboratorio on examenes_laboratorio.documento_id = documentos.id ").
+		Preload("ExamenLaboratorio").
 		Preload("Peluqueria").
+		Preload("ExamenLaboratorio").
 		Preload("Vacunacion").
 		Preload("Vacunacion.Vacuna").
 		Preload("Vacunacion.GrupoVacuna").
@@ -61,9 +64,10 @@ func ListarServicios(c echo.Context) error {
 		Preload("Tercero").
 		Preload("Mascota").
 		Preload("Prefijo").
+		Order("documentos.created_at desc").
 		Where(where).
 		Where("documentos.tipo = 'venta' and documentos.subtipo = 'servicio' and " +
-			"(peluqueadas.id != '00000000-0000-0000-0000-000000000000' OR vacunaciones.id != '00000000-0000-0000-0000-000000000000'  OR desparasitaciones.id != '00000000-0000-0000-0000-000000000000') ")
+			"(peluqueadas.id != '00000000-0000-0000-0000-000000000000' OR vacunaciones.id != '00000000-0000-0000-0000-000000000000'  OR desparasitaciones.id != '00000000-0000-0000-0000-000000000000'  OR  examenes_laboratorio.id != '00000000-0000-0000-0000-000000000000') ")
 
 	if fechaInicio != "" { // agrego la fecha de inicio si esta definida, en la consulta
 		fechaI := strings.Split(fechaInicio, "T")[0]

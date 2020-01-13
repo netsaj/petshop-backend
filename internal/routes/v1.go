@@ -3,11 +3,14 @@ package routes
 import (
 	"github.com/labstack/echo"
 
+	"github/netsaj/petshop-backend/internal/controllers/archivos_v1"
 	"github/netsaj/petshop-backend/internal/controllers/auth_v1"
 	"github/netsaj/petshop-backend/internal/controllers/barrios_v1"
 	"github/netsaj/petshop-backend/internal/controllers/calendario_v1"
 	"github/netsaj/petshop-backend/internal/controllers/clientes_v1"
 	"github/netsaj/petshop-backend/internal/controllers/desparasitantes_v1"
+	"github/netsaj/petshop-backend/internal/controllers/documentos_v1"
+	"github/netsaj/petshop-backend/internal/controllers/examenes_v1"
 	"github/netsaj/petshop-backend/internal/controllers/mascotas_v1"
 	"github/netsaj/petshop-backend/internal/controllers/servicios_v1"
 	"github/netsaj/petshop-backend/internal/controllers/users_v1"
@@ -16,6 +19,10 @@ import (
 )
 
 func V1(e *echo.Echo) {
+	//exploracion de archivos
+	e.GET("/storage/:filename", archivos_v1.ShowFile)
+
+	//api endpoints
 	v1 := e.Group("/v1")
 
 	auth := v1.Group("/auth")
@@ -35,6 +42,7 @@ func V1(e *echo.Echo) {
 	clientes.POST("", clientes_v1.Create)
 	clientes.PUT("", clientes_v1.Update)
 	clientes.GET("/:id", clientes_v1.FindByID)
+	clientes.GET("/terceros", clientes_v1.SearchAll)
 
 	// mascotas
 	mascotas := v1.Group("/mascotas")
@@ -48,6 +56,10 @@ func V1(e *echo.Echo) {
 	vacunas.POST("", vacunas_v1.CrearVacuna)
 	vacunas.DELETE("/:id", vacunas_v1.Delete)
 	vacunas.PUT("", vacunas_v1.Update)
+
+	// examenes
+	examenes := v1.Group("/examenes")
+	examenes.GET("", examenes_v1.List)
 
 	// vacunas - rutas para los grupos de vacunas
 	gruposVacunas := vacunas.Group("/grupos")
@@ -64,6 +76,8 @@ func V1(e *echo.Echo) {
 
 	// documentos
 	documentos := v1.Group("/documentos")
+	documentos.DELETE("/:id", documentos_v1.Delete) // elimina un documento y toda la informacion asociada.
+
 	// servicios
 	servicios := documentos.Group("/servicios")
 	servicios.POST("", servicios_v1.NuevoServicio)
@@ -85,4 +99,9 @@ func V1(e *echo.Echo) {
 	usuarios.POST("", users_v1.Create)
 	usuarios.DELETE("/:id", users_v1.Delete)
 	usuarios.PUT("", users_v1.Update)
+
+	// carga y descarga de archivos
+	archivos := v1.Group("/archivos")
+	archivos.POST("/cargar", archivos_v1.UploadFile)
+	archivos.POST("/laboratorio/cargar", archivos_v1.UploadFileLaboratorio)
 }

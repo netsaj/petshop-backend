@@ -25,6 +25,7 @@ type EditarServicio struct {
 	Peluqueria      models.Peluqueria      `json:"peluqueria" validate:"omitempty"`
 	Vacunacion      models.Vacunacion      `json:"vacunacion" validate:"omitempty"`
 	Desparasitacion models.Desparasitacion `json:"desparasitacion" validate:"omitempty"`
+	ExamenLaboratorio models.ExamenLaboratorio `json:"laboratorio" validate:"omitempty"`
 }
 
 func EditarUnServicio(c echo.Context) error {
@@ -51,6 +52,7 @@ func EditarUnServicio(c echo.Context) error {
 	documento.Peluqueria = servicio.Peluqueria
 	documento.Vacunacion = servicio.Vacunacion
 	documento.Desparasitacion = servicio.Desparasitacion
+	documento.ExamenLaboratorio = servicio.ExamenLaboratorio
 
 	if err := documento.CrearDocumentoServicio(); err != nil {
 		return utils.ReturnError(err, c)

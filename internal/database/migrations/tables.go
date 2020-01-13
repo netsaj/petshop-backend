@@ -20,6 +20,8 @@ func createTables() {
 		// listado de desparasitante
 		&models.GrupoDesparasitante{},
 		&models.Desparasitante{},
+		// examenes medicos
+		&models.Examenes{},
 
 		// manejo de documentos generados (servicios,...)
 		&models.Prefijo{},
@@ -27,6 +29,10 @@ func createTables() {
 		&models.Peluqueria{},
 		&models.Vacunacion{},
 		&models.Desparasitacion{},
+		&models.ExamenLaboratorio{},
+		&models.ArchivosLaboratorio{},
+		&models.Archivo{},
+
 
 		// CRM (calendario, ...)
 		&models.Calendario{},

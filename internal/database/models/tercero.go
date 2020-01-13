@@ -9,7 +9,7 @@ type Tercero struct {
 	Direccion string    `json:"direccion" gorm:"size: 255" validate:"required,gte=0"`
 	Barrio    string    `json:"barrio" gorm:"size: 255",validate:"required,gte=2"`
 	Email     string    `json:"email,omitempty" validate:"omitempty,email" `
-	Mascotas  []Mascota `gorm:"foreignkey:TerceroID,association_foreignkey:ID" json:"mascotas"`
+	Mascotas  []Mascota `gorm:"foreignkey:TerceroID;association_foreignkey:ID" json:"mascotas"`
 	IsCliente bool      `gorm:"not null" json:"is_cliente"`
 }
 

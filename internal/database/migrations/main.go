@@ -15,4 +15,5 @@ func Run() {
 	prefijoDefault()
 	agregarGruposDesparasitantes()
 	agregarDesparasitantes()
+	agregarExamenes()
 }

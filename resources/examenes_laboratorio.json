@@ -1,0 +1,26 @@
+[
+  {
+    "id": "0fecb0ff-4e32-4d95-8be4-cd5cb99758cb",
+    "nombre": "Hemoleucograma (Examen de sangre)"
+  },
+  {
+    "id": "c8156b06-883a-4027-abba-986a124098bc",
+    "nombre": "Química sanguinea (pruebas de función hepática y renal)"
+  },
+  {
+    "id": "e3cb49ad-1966-4fc0-9e71-ded26e74d918",
+    "nombre": "Radiografía"
+  },
+  {
+    "id": "2b433e60-9d6b-43b6-9da3-65981c5985c8",
+    "nombre": "Ecografía"
+  },
+  {
+    "id": "1513d8ef-0892-4974-b01a-cc02b4f33ae7",
+    "nombre": "Raspado de piel (ácaros)"
+  },
+  {
+    "id": "1042d164-cd46-4e2a-8a05-7f818e56d68a",
+    "nombre": "Raspado de piel (Hongos - KOH)"
+  }
+]

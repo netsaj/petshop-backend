@@ -18,6 +18,10 @@ func FindByID(c echo.Context) error {
 		Joins("left join peluqueadas on peluqueadas.documento_id = documentos.id ").
 		Joins("left join vacunaciones on vacunaciones.documento_id = documentos.id ").
 		Joins("left join desparasitaciones on desparasitaciones.documento_id = documentos.id ").
+		Joins("left join examenes_laboratorio on examenes_laboratorio.documento_id = documentos.id ").
+		Preload("ExamenLaboratorio").
+		Preload("ExamenLaboratorio.ArchivosLaboratorio").
+		Preload("ExamenLaboratorio.ArchivosLaboratorio.Archivo").
 		Preload("Peluqueria").
 		Preload("Vacunacion").
 		Preload("Vacunacion.Vacuna").
@@ -30,7 +34,12 @@ func FindByID(c echo.Context) error {
 		Preload("Mascota").
 		Preload("Prefijo").
 		Where("documentos.tipo = 'venta' and documentos.subtipo = 'servicio' and " +
-			"((peluqueadas.id != '00000000-0000-0000-0000-000000000000') OR (vacunaciones.id != '00000000-0000-0000-0000-000000000000') OR (desparasitaciones.id != '00000000-0000-0000-0000-000000000000')) ")
+			"(" +
+			"(peluqueadas.id != '00000000-0000-0000-0000-000000000000') OR " +
+			"(vacunaciones.id != '00000000-0000-0000-0000-000000000000') OR " +
+			"(desparasitaciones.id != '00000000-0000-0000-0000-000000000000') OR " +
+			"(examenes_laboratorio.id != '00000000-0000-0000-0000-000000000000')" +
+			") ")
 
 	var documento models.Documento
 	if result := query.First(&documento, "documentos.id =?", id); result.Error != nil {

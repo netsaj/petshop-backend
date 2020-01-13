@@ -13,6 +13,8 @@ func ContarServicios(c echo.Context) error {
 	defer db.Close()
 	var peluqueria uint
 	var vacunacion uint
+	var desparasitacion uint
+	var laboratorio uint
 
 	if result := db.Model(models.Peluqueria{}).Where("terminado = false").Count(&peluqueria); result.Error != nil {
 		peluqueria = 0
@@ -21,9 +23,19 @@ func ContarServicios(c echo.Context) error {
 		fmt.Print("error al contar vacunacion")
 		vacunacion = 0
 	}
+	if result := db.Model(models.Desparasitacion{}).Where("terminado = false").Count(&desparasitacion); result.Error != nil {
+		fmt.Print("error al contar Desparasitacion")
+		desparasitacion = 0
+	}
+	if result := db.Model(models.ExamenLaboratorio{}).Where("terminado = false").Count(&laboratorio); result.Error != nil {
+		fmt.Print("error al contar ExamenLaboratorio")
+		laboratorio = 0
+	}
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"peluqueria": peluqueria,
 		"vacunacion": vacunacion,
+		"desparasitacion":desparasitacion,
+		"laboratorio":laboratorio,
 	})
 }

@@ -19,9 +19,10 @@ type Servicio struct {
 	MascotaID uuid.UUID `json:"mascota_id" validate:"required"`
 	UsuarioID uuid.UUID `json:"usuario_id" validate:"required"`
 
-	Peluqueria      models.Peluqueria      `json:"peluqueria" validate:"omitempty"`
-	Vacunacion      models.Vacunacion      `json:"vacunacion" validate:"omitempty"`
-	Desparasitacion models.Desparasitacion `json:"desparasitacion" validate:"omitempty"`
+	Peluqueria        models.Peluqueria        `json:"peluqueria" validate:"omitempty"`
+	Vacunacion        models.Vacunacion        `json:"vacunacion" validate:"omitempty"`
+	Desparasitacion   models.Desparasitacion   `json:"desparasitacion" validate:"omitempty"`
+	ExamenLaboratorio models.ExamenLaboratorio `json:"laboratorio" validate:"omitempty"`
 }
 
 func NuevoServicio(c echo.Context) error {
@@ -45,6 +46,7 @@ func NuevoServicio(c echo.Context) error {
 	documento.Peluqueria = servicio.Peluqueria
 	documento.Vacunacion = servicio.Vacunacion
 	documento.Desparasitacion = servicio.Desparasitacion
+	documento.ExamenLaboratorio = servicio.ExamenLaboratorio
 
 	if err := documento.CrearDocumentoServicio(); err != nil {
 		return utils.ReturnError(err, c)

@@ -31,13 +31,14 @@ type Documento struct {
 	ServicioTerminado bool      `gorm:"not null;default:false" json:"servicio_terminado"`
 
 	// agregaciones
-	Prefijo         Prefijo         `validate:"-" gorm:"foreignkey:PrefijoID" json:"prefijo,omitempty"`
-	Peluqueria      Peluqueria      `validate:"-" gorm:"foreignkey:DocumentoID" json:"peluqueria,omitempty"`
-	Vacunacion      Vacunacion      `validate:"-" gorm:"foreignkey:DocumentoID" json:"vacunacion,omitempty"`
-	Desparasitacion Desparasitacion `validate:"-" gorm:"foreignkey:DocumentoID" json:"desparasitacion,omitempty"`
-	Usuario         Usuario         `validate:"-" gorm:"foreignkey:UsuarioID" json:"usuario,omitempty"`
-	Tercero         Tercero         `validate:"-" gorm:"foreignkey:TerceroID" json:"tercero,omitempty"`
-	Mascota         Mascota         `validate:"-" gorm:"foreignkey:MascotaID" json:"mascota,omitempty"`
+	Prefijo           Prefijo           `validate:"-" gorm:"foreignkey:PrefijoID" json:"prefijo,omitempty"`
+	Peluqueria        Peluqueria        `validate:"-" gorm:"foreignkey:DocumentoID" json:"peluqueria,omitempty"`
+	ExamenLaboratorio ExamenLaboratorio `validate:"-" gorm:"foreignkey:DocumentoID" json:"laboratorio,omitempty"`
+	Vacunacion        Vacunacion        `validate:"-" gorm:"foreignkey:DocumentoID" json:"vacunacion,omitempty"`
+	Desparasitacion   Desparasitacion   `validate:"-" gorm:"foreignkey:DocumentoID" json:"desparasitacion,omitempty"`
+	Usuario           Usuario           `validate:"-" gorm:"foreignkey:UsuarioID" json:"usuario,omitempty"`
+	Tercero           Tercero           `validate:"-" gorm:"foreignkey:TerceroID" json:"tercero,omitempty"`
+	Mascota           Mascota           `validate:"-" gorm:"foreignkey:MascotaID" json:"mascota,omitempty"`
 }
 
 func (Documento) TableName() string {
@@ -53,6 +54,9 @@ func (d *Documento) calcularTotal() {
 	}
 	if !reflect.DeepEqual(d.Desparasitacion, Desparasitacion{}) {
 		d.Total += d.Desparasitacion.Total
+	}
+	if !reflect.DeepEqual(d.ExamenLaboratorio, ExamenLaboratorio{}) {
+		d.Total += d.ExamenLaboratorio.Total
 	}
 }
 
@@ -80,6 +84,7 @@ func (d *Documento) CrearDocumentoServicio() error {
 	} else if esNuevo {
 		prefijo.Incrementar()
 	}
+	// / PELUQUERIA
 	if reflect.DeepEqual(d.Peluqueria, Peluqueria{}) {
 		fmt.Println("ignorando Peluqueria, estructura vacía")
 	} else {
@@ -87,30 +92,36 @@ func (d *Documento) CrearDocumentoServicio() error {
 		db.Save(&d.Peluqueria)
 		var calendario Calendario
 		db.Find(&calendario, "tipo = 'Peluquería' and documento_id = ?", d.ID)
+		fmt.Sprintf("Peluqueada id : %v", calendario.ID)
 		calendario.FechaAgendada = time.Now().Add(time.Duration(time.Hour * 24 * 60))
 		calendario.Tipo = "Peluquería"
 		calendario.TerceroID = d.TerceroID
 		calendario.MascotaID = d.MascotaID
 		calendario.Terminado = false
+		calendario.DocumentoID = d.ID
 		calendario.ObservacionesAbierto = "Observaciones en servicio anterior: " + d.Peluqueria.Observaciones
 		db.Save(&calendario)
 	}
+
+	// / VACUNACION
 	if reflect.DeepEqual(d.Vacunacion, Vacunacion{}) {
 		fmt.Println("ignorando Vacunacion, estructura vacía")
 	} else {
 		d.Vacunacion.Terminado = d.ServicioTerminado
 		db.Save(&d.Vacunacion).Preload("Vacuna").Find(&d.Vacunacion)
-		var calendario  Calendario
+		var calendario Calendario
 		db.Find(&calendario, "tipo = 'Vacunación' and documento_id = ?", d.ID)
 		calendario.FechaAgendada = d.Vacunacion.Revacunacion
 		calendario.Tipo = "Vacunación"
 		calendario.TerceroID = d.TerceroID
 		calendario.MascotaID = d.MascotaID
 		calendario.Terminado = false
-		calendario.ObservacionesAbierto = fmt.Sprintf("Vacuna anterior: %v", d.Vacunacion.Vacuna.Nombre)
 		calendario.DocumentoID = d.ID
+		calendario.ObservacionesAbierto = fmt.Sprintf("Vacuna anterior: %v", d.Vacunacion.Vacuna.Nombre)
 		db.Save(&calendario)
 	}
+
+	// / DESPARASITACION
 	if reflect.DeepEqual(d.Desparasitacion, Desparasitacion{}) {
 		fmt.Println("ignorando desparasitacion, estructura vacía")
 	} else {
@@ -123,12 +134,20 @@ func (d *Documento) CrearDocumentoServicio() error {
 		calendario.TerceroID = d.TerceroID
 		calendario.MascotaID = d.MascotaID
 		calendario.Terminado = false
+		calendario.DocumentoID = d.ID
 		calendario.ObservacionesAbierto = fmt.Sprintf(
 			"Desparasitante anterior: %v, Dosis: %v",
 			d.Desparasitacion.Desparasitante.Nombre,
 			d.Desparasitacion.Dosis)
-		calendario.DocumentoID = d.ID
 		db.Save(&calendario)
+	}
+
+	// LABORATORIO
+	if reflect.DeepEqual(d.ExamenLaboratorio, ExamenLaboratorio{}) {
+		fmt.Println("ignorando ExamenLaboratorio, estructura vacía")
+	} else {
+		d.ExamenLaboratorio.Terminado = d.ServicioTerminado
+		db.Save(&d.ExamenLaboratorio).Find(&d.ExamenLaboratorio)
 	}
 	spew.Println(&d)
 	return nil

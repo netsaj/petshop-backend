@@ -180,7 +180,7 @@ func agregarDesparasitantes() {
 		if err := utils.LoadFileJSON(filepath.FromSlash(filepath.FromSlash("resources/desparasitantes.json")), &data); err != nil {
 			panic(err)
 		}
-		fmt.Printf("Vacunas encontradas en el archivo: %v", len(data))
+		fmt.Printf("Desparasitante encontradas en el archivo: %v", len(data))
 		bar := pb.StartNew(len(data))
 		defer bar.Finish()
 		for i := 0; i < len(data); i++ {
@@ -196,4 +196,30 @@ func agregarDesparasitantes() {
 
 	}
 	fmt.Printf("Total de Desparasitante: %v \n", count)
+}
+
+func agregarExamenes() {
+	db := database.GetConnection()
+	defer db.Close()
+	var count int
+	db.Model(&models.Examenes{}).Count(&count)
+	if count == 0 {
+		// struct for load `barrios`
+		var data []models.Examenes
+		// we initialize our Users array
+		if err := utils.LoadFileJSON(filepath.FromSlash(filepath.FromSlash("resources/examenes_laboratorio.json")), &data); err != nil {
+			panic(err)
+		}
+		fmt.Printf("Examenes encontrados en el archivo: %v", len(data))
+		bar := pb.StartNew(len(data))
+		defer bar.Finish()
+		for i := 0; i < len(data); i++ {
+			db.Model(&models.Examenes{}).Save(&data[i])
+			bar.Increment()
+			time.Sleep(time.Millisecond)
+		}
+		defer bar.Finish()
+	}
+	db.Model(&models.Examenes{}).Count(&count)
+	fmt.Printf("Total de Examenes medicos: %v \n", count)
 }
