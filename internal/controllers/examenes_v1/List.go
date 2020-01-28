@@ -14,7 +14,7 @@ func List(c echo.Context) error {
 	var examenes []models.Examenes
 	db := database.GetConnection()
 	defer db.Close()
-	if result := db.Find(&examenes); result.Error != nil {
+	if result := db.Order("nombre asc").Find(&examenes); result.Error != nil {
 		return utils.ReturnError(result.Error, c)
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{

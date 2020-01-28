@@ -1,12 +1,14 @@
 package clientes_v1
 
 import (
+	"net/http"
+
 	"github.com/davecgh/go-spew/spew"
 	"github.com/labstack/echo"
+
 	"github/netsaj/petshop-backend/internal/database"
 	"github/netsaj/petshop-backend/internal/database/models"
 	"github/netsaj/petshop-backend/internal/utils"
-	"net/http"
 )
 
 func Create(c echo.Context) error {
@@ -16,10 +18,15 @@ func Create(c echo.Context) error {
 		return utils.ReturnError(err, c)
 	}
 	db := database.GetConnection()
+	var temp models.Tercero
+	if !db.Where("documento = ?", cliente.Cedula).Find(&temp).RecordNotFound() {
+		cliente.ID = temp.ID
+	}
+
 	cliente.IsCliente = true
 	defer db.Close()
 	spew.Print(&cliente)
-	if result := db.Create(&cliente); result.Error != nil {
+	if result := db.Save(&cliente); result.Error != nil {
 		code, body := utils.ErrorHandler(result.Error)
 		return c.JSON(code, body)
 	}

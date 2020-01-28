@@ -22,5 +22,41 @@
   {
     "id": "1042d164-cd46-4e2a-8a05-7f818e56d68a",
     "nombre": "Raspado de piel (Hongos - KOH)"
+  },
+  {
+    "id": "6ceaee71-da00-49c3-bea3-fd4dfd01f1f4",
+    "nombre": "Patologia"
+  },
+  {
+    "id": "74f596d7-20a8-444d-8643-532569f64c4b",
+    "nombre": "Coprologico"
+  },
+  {
+    "id": "e1f2c43a-ed21-4767-aa61-6c457035cb68",
+    "nombre": "Parcial de orina"
+  },
+  {
+    "id": "4180b187-60a9-4bb5-b3b0-c3f397cad2c8",
+    "nombre": "T4, Tiroides"
+  },
+  {
+    "id": "93c49a95-e8a3-415f-a974-4ed694b34aff",
+    "nombre": "Test de Moquillo"
+  },
+  {
+    "id": "16d6d3a5-8d1e-45a3-b69b-20756e7bc1a1",
+    "nombre": "Test de Parvovirosis"
+  },
+  {
+    "id": "2e126cfb-57ad-48d8-8eef-27d3614df7c8",
+    "nombre": "Test de SIDA"
+  },
+  {
+    "id": "e3d87f6a-db84-4948-933b-1e92573c4c94",
+    "nombre": "Test de Leucemia"
+  },
+  {
+    "id": "91b77459-4234-4277-85ca-28eaa9278289",
+    "nombre": "Test de Erlichia"
   }
 ]

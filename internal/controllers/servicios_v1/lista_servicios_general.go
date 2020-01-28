@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/labstack/echo"
 
@@ -66,17 +67,21 @@ func ListarServicios(c echo.Context) error {
 		Preload("Prefijo").
 		Order("documentos.created_at desc").
 		Where(where).
+		Group("documentos.id").
 		Where("documentos.tipo = 'venta' and documentos.subtipo = 'servicio' and " +
 			"(peluqueadas.id != '00000000-0000-0000-0000-000000000000' OR vacunaciones.id != '00000000-0000-0000-0000-000000000000'  OR desparasitaciones.id != '00000000-0000-0000-0000-000000000000'  OR  examenes_laboratorio.id != '00000000-0000-0000-0000-000000000000') ")
 
 	if fechaInicio != "" { // agrego la fecha de inicio si esta definida, en la consulta
-		fechaI := strings.Split(fechaInicio, "T")[0]
-		query = query.Where(" DATE(documentos.created_at) >= ? ", fechaI)
+		fechaInicio = strings.Split(fechaInicio, "T")[0]
+	} else {
+		fechaInicio = "2019-01-01"
 	}
 	if fechaFinal != "" { // agrego la fecha de fin si esta definida, en la consulta.
-		fechaF := strings.Split(fechaFinal, "T")[0]
-		query = query.Where(" DATE(documentos.created_at) <= ? ", fechaF)
+		fechaFinal = strings.Split(fechaFinal, "T")[0]
+	} else {
+		fechaFinal = strings.Split(time.Now().String(), "T")[0]
 	}
+	query = query.Where(" (DATE(documentos.created_at) >= ? AND DATE(documentos.created_at) <= ? ) ", fechaInicio, fechaFinal)
 	var count uint
 	if result := query.Count(&count); result.Error != nil {
 		return utils.ReturnError(result.Error, c)

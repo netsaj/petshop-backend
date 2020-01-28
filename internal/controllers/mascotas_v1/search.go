@@ -2,10 +2,12 @@ package mascotas_v1
 
 import (
 	"fmt"
+	"strings"
+
 	"github.com/labstack/echo"
+
 	"github/netsaj/petshop-backend/internal/database"
 	"github/netsaj/petshop-backend/internal/database/models"
-	"strings"
 )
 
 func Search(c echo.Context) error {
@@ -16,7 +18,7 @@ func Search(c echo.Context) error {
 		if len(query) > 0 {
 			query += " AND "
 		}
-		query += "( nombre ILIKE '%" + q + "%' or especie ILIKE '%" + q + "%' or raza ILIKE '%" + q + "%' or color ILIKE '%" + q + "%' or sexo ILIKE '%" + q + "%' or CAST(edad as TEXT) ILIKE '%" + q + "%' or CAST(fecha_nacimiento as TEXT)  ILIKE '%" + q + "%')"
+		query += "( rfid_card_id ILIKE '%" + q + "%' or nombre ILIKE '%" + q + "%' or especie ILIKE '%" + q + "%' or raza ILIKE '%" + q + "%' or color ILIKE '%" + q + "%' or sexo ILIKE '%" + q + "%' or CAST(edad as TEXT) ILIKE '%" + q + "%' or CAST(fecha_nacimiento as TEXT)  ILIKE '%" + q + "%')"
 	}
 	db := database.GetConnection()
 	defer db.Close()

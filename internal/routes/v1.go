@@ -12,6 +12,7 @@ import (
 	"github/netsaj/petshop-backend/internal/controllers/documentos_v1"
 	"github/netsaj/petshop-backend/internal/controllers/examenes_v1"
 	"github/netsaj/petshop-backend/internal/controllers/mascotas_v1"
+	"github/netsaj/petshop-backend/internal/controllers/reportes_v1"
 	"github/netsaj/petshop-backend/internal/controllers/servicios_v1"
 	"github/netsaj/petshop-backend/internal/controllers/users_v1"
 	"github/netsaj/petshop-backend/internal/controllers/vacunas_v1"
@@ -19,10 +20,10 @@ import (
 )
 
 func V1(e *echo.Echo) {
-	//exploracion de archivos
+	// exploracion de archivos
 	e.GET("/storage/:filename", archivos_v1.ShowFile)
 
-	//api endpoints
+	// api endpoints
 	v1 := e.Group("/v1")
 
 	auth := v1.Group("/auth")
@@ -104,4 +105,8 @@ func V1(e *echo.Echo) {
 	archivos := v1.Group("/archivos")
 	archivos.POST("/cargar", archivos_v1.UploadFile)
 	archivos.POST("/laboratorio/cargar", archivos_v1.UploadFileLaboratorio)
+
+	reportes := v1.Group("/reportes")
+	reportes.GET("/general", reportes_v1.ServiciosGlobal)
+	reportes.GET("/mascota/:id", reportes_v1.ReporteMascota)
 }

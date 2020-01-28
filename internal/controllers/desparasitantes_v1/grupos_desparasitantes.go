@@ -12,6 +12,7 @@ import (
 
 func ListarGrupos(c echo.Context) error {
 	db := database.GetConnection()
+	defer db.Close()
 	var gruposDesparasitantes []models.GrupoDesparasitante
 
 	if result := db.Model(&gruposDesparasitantes).

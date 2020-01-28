@@ -34,6 +34,7 @@ func ListarServiciosActivos(c echo.Context) error {
 		Preload("Mascota").
 		Preload("Prefijo").
 		Order("documentos.created_at desc").
+		Group("documentos.id").
 		Where("documentos.tipo = 'venta' and documentos.subtipo = 'servicio' and " +
 			"(" +
 			"(peluqueadas.id != '00000000-0000-0000-0000-000000000000' AND peluqueadas.terminado = false) OR " +

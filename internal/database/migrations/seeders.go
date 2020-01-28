@@ -203,7 +203,7 @@ func agregarExamenes() {
 	defer db.Close()
 	var count int
 	db.Model(&models.Examenes{}).Count(&count)
-	if count == 0 {
+	if count < 15 {
 		// struct for load `barrios`
 		var data []models.Examenes
 		// we initialize our Users array

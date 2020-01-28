@@ -1,8 +1,9 @@
 package models
 
 import (
-	uuid "github.com/satori/go.uuid"
 	"time"
+
+	uuid "github.com/satori/go.uuid"
 )
 
 type Mascota struct {
@@ -16,6 +17,7 @@ type Mascota struct {
 	Sexo            string    `gorm:"size:10;not null" validate:"required,gte=2,alpha" json:"sexo"`
 	Edad            float32   `gorm:"not null;'" validate:"gte=0" json:"edad"`
 	FechaNacimiento time.Time `gorm:"not null;" json:"fecha_nacimiento" `
+	RfidCardID      string    `json:"rfid_card_id"`
 
 	Tercero Tercero `gorm:"foreignkey:TerceroID;association_foreignkey:ID" json:"tercero" validate:"-"`
 }
