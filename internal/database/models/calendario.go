@@ -19,10 +19,10 @@ type Calendario struct {
 	UsuarioCierreID      uuid.UUID `gorm:"default:NULL" json:"usuario_cierre_id"`
 	DocumentoID          uuid.UUID `gorm:"default:NULL" json:"documento_id"`
 
-	Tercero Tercero `validate:"-" gorm:"foreignkey:TerceroID" json:"tercero"`
-	Mascota Mascota `validate:"-" gorm:"foreignkey:MascotaID" json:"mascota"`
-	Documento Documento `validate:"-" gorm:"foreignkey:DocumentoID" json:"documento"`
-	UsuarioCierre Usuario `validate:"-" gorm:"foreignkey:UsuarioCierreID" json:"usuario_cierre"`
+	Tercero       Tercero   `validate:"-" gorm:"foreignkey:TerceroID" json:"tercero"`
+	Mascota       Mascota   `validate:"-" gorm:"foreignkey:MascotaID" json:"mascota"`
+	Documento     Documento `validate:"-" gorm:"foreignkey:DocumentoID" json:"documento"`
+	UsuarioCierre Usuario   `validate:"-" gorm:"foreignkey:UsuarioCierreID" json:"usuario_cierre"`
 }
 
 func (Calendario) TableName() string {
