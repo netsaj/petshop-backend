@@ -37,7 +37,7 @@ func UploadFile(c echo.Context) error {
 	// Destination
 	filename := fmt.Sprintf("%d-%s", time.Now().Unix(), file.Filename)
 	archivo.Nombre = file.Filename
-	archivo.Ruta =  STORAGE_PATH + filename
+	archivo.Ruta = STORAGE_PATH + filename
 	archivo.ContentType = file.Header.Get("Content-Type")
 	split := strings.Split(file.Filename, ".")
 	archivo.Extension = split[len(split)-1]

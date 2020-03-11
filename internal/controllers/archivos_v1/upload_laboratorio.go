@@ -51,7 +51,6 @@ func UploadFileLaboratorio(c echo.Context) error {
 		fmt.Println(err)
 		return utils.ReturnError(err, c)
 	}
-	defer dst.Close()
 
 	// Copy
 	if _, err = io.Copy(dst, src); err != nil {

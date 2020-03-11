@@ -105,6 +105,7 @@ func V1(e *echo.Echo) {
 	archivos := v1.Group("/archivos")
 	archivos.POST("/cargar", archivos_v1.UploadFile)
 	archivos.POST("/laboratorio/cargar", archivos_v1.UploadFileLaboratorio)
+	archivos.GET("/laboratorio/borrar/:archivo_id", archivos_v1.DeleteFile)
 
 	reportes := v1.Group("/reportes")
 	reportes.GET("/general", reportes_v1.ServiciosGlobal)
