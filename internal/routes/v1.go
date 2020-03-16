@@ -22,6 +22,7 @@ import (
 func V1(e *echo.Echo) {
 	// exploracion de archivos
 	e.GET("/storage/:filename", archivos_v1.ShowFile)
+	e.GET("/logo", archivos_v1.ShowLogo)
 
 	// api endpoints
 	v1 := e.Group("/v1")
