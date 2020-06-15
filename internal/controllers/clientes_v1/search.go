@@ -42,7 +42,7 @@ func Search(c echo.Context) error {
 				where += " AND "
 			}
 			where += "( " +
-				"mascotas.rfid_card_id = '" + q + "' or terceros.nombre ILIKE  '%" + q + "%' or CAST(terceros.cedula as TEXT) ILIKE  '%" + q + "%' or terceros.telefono ILIKE  '%" + q + "%' or terceros.celular ILIKE  '%" + q + "%' or terceros.direccion ILIKE  '%" + q + "%' or terceros.barrio ILIKE  '%" + q + "%' or terceros.email ILIKE  '%" + q + "%' " +
+				"mascotas.rfid_card_id = '" + q + "' or terceros.nombre ILIKE  '%" + q + "%' or CAST(terceros.cedula as TEXT) ILIKE  '%" + q + "%' or terceros.telefono ILIKE  '%" + q + "%' or terceros.celular ILIKE  '%" + q + "%' or terceros.direccion ILIKE  '%" + q + "%' or terceros.email ILIKE  '%" + q + "%' " +
 				"or mascotas.nombre ILIKE  '%" + q + "%' or CAST(mascotas.raza as TEXT) ILIKE  '%" + q + "%' or mascotas.especie ILIKE  '%" + q + "%' or mascotas.color ILIKE  '%" + q + "%' or mascotas.sexo ILIKE  '%" + q + "%' " +
 				")"
 		}
