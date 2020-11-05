@@ -35,7 +35,9 @@ func ServiciosGlobal(c echo.Context) error {
 		Joins("left join mascotas on mascotas.id = documentos.mascota_id").
 		Joins("left join prefijos on prefijos.id = documentos.prefijo_id").
 		Joins("left join examenes_laboratorio on examenes_laboratorio.documento_id = documentos.id ").
+		Joins("left join historia_clinicas on historia_clinicas.documento_id = documentos.id ").
 		Preload("ExamenLaboratorio").
+		Preload("HistoriaClinica").
 		Preload("Peluqueria").
 		Preload("ExamenLaboratorio").
 		Preload("Vacunacion").
@@ -61,7 +63,10 @@ func ServiciosGlobal(c echo.Context) error {
 	var countVacunacion uint
 	var countDesparasitacion uint
 	var countLaboratorio uint
+	var countHistoriaclinica uint
 
+	db.Model(models.HistoriaClinica{}).Joins("left join documentos on historia_clinicas.documento_id = documentos.id ").Where(" DATE(documentos.created_at) >= ? and DATE(documentos.created_at) <= ?", fechaInicio, fechaFinal).
+		Count(&countHistoriaclinica)
 	db.Model(models.Peluqueria{}).Joins("left join documentos on peluqueadas.documento_id = documentos.id ").Where(" DATE(documentos.created_at) >= ? and DATE(documentos.created_at) <= ?", fechaInicio, fechaFinal).
 		Count(&countPeluqueria)
 	db.Model(models.Vacunacion{}).Joins("left join documentos on vacunaciones.documento_id = documentos.id ").Where(" DATE(documentos.created_at) >= ? and DATE(documentos.created_at) <= ?", fechaInicio, fechaFinal).
@@ -77,5 +82,6 @@ func ServiciosGlobal(c echo.Context) error {
 		"total_vacunacion":      countVacunacion,
 		"total_desparasitacion": countDesparasitacion,
 		"total_laboratorio":     countLaboratorio,
+		"total_historiaclinica": countHistoriaclinica,
 	})
 }

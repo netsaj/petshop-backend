@@ -33,6 +33,9 @@ func createTables() {
 		&models.ArchivosLaboratorio{},
 		&models.Archivo{},
 
+		// Historia clinica
+		&models.HistoriaClinica{},
+
 
 		// CRM (calendario, ...)
 		&models.Calendario{},

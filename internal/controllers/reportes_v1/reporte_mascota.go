@@ -23,7 +23,9 @@ func ReporteMascota(c echo.Context) error {
 		Joins("left join mascotas on mascotas.id = documentos.mascota_id").
 		Joins("left join prefijos on prefijos.id = documentos.prefijo_id").
 		Joins("left join examenes_laboratorio on examenes_laboratorio.documento_id = documentos.id ").
+		Joins("left join historia_clinicas on historia_clinicas.documento_id = documentos.id ").
 		Preload("ExamenLaboratorio").
+		Preload("HistoriaClinica").
 		Preload("Peluqueria").
 		Preload("ExamenLaboratorio").
 		Preload("Vacunacion").
@@ -49,6 +51,7 @@ func ReporteMascota(c echo.Context) error {
 	var countVacunacion uint
 	var countDesparasitacion uint
 	var countLaboratorio uint
+	var countHistoriaClinica uint
 
 	db.Model(models.Peluqueria{}).Joins("left join documentos on peluqueadas.documento_id = documentos.id ").Where("documentos.mascota_id = ?", mascotaID).
 		Count(&countPeluqueria)
@@ -58,6 +61,8 @@ func ReporteMascota(c echo.Context) error {
 		Count(&countDesparasitacion)
 	db.Model(models.ExamenLaboratorio{}).Joins("left join documentos on examenes_laboratorio.documento_id = documentos.id ").Where("documentos.mascota_id = ?", mascotaID).
 		Count(&countLaboratorio)
+	db.Model(models.HistoriaClinica{}).Joins("left join documentos on historia_clinicas.documento_id = documentos.id ").Where("documentos.mascota_id = ?", mascotaID).
+		Count(&countHistoriaClinica)
 
 	return c.JSON(200, map[string]interface{}{
 		"documentos":            documentos,
@@ -65,6 +70,7 @@ func ReporteMascota(c echo.Context) error {
 		"total_vacunacion":      countVacunacion,
 		"total_desparasitacion": countDesparasitacion,
 		"total_laboratorio":     countLaboratorio,
+		"total_historiaclinica":     countHistoriaClinica,
 	})
 
 }

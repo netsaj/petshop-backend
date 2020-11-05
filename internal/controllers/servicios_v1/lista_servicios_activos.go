@@ -20,6 +20,8 @@ func ListarServiciosActivos(c echo.Context) error {
 		Joins("left join vacunaciones on vacunaciones.documento_id = documentos.id ").
 		Joins("left join desparasitaciones on desparasitaciones.documento_id = documentos.id ").
 		Joins("left join examenes_laboratorio on examenes_laboratorio.documento_id = documentos.id ").
+		Joins("left join historia_clinicas on historia_clinicas.documento_id = documentos.id ").
+		Preload("HistoriaClinica").
 		Preload("ExamenLaboratorio").
 		Preload("ExamenLaboratorio.ArchivosLaboratorio").
 		Preload("Peluqueria").
@@ -40,6 +42,7 @@ func ListarServiciosActivos(c echo.Context) error {
 			"(peluqueadas.id != '00000000-0000-0000-0000-000000000000' AND peluqueadas.terminado = false) OR " +
 			"(vacunaciones.id != '00000000-0000-0000-0000-000000000000' and vacunaciones.terminado = false) OR " +
 			"(desparasitaciones.id != '00000000-0000-0000-0000-000000000000' and desparasitaciones.terminado = false) OR " +
+			"(historia_clinicas.id != '00000000-0000-0000-0000-000000000000' and historia_clinicas.terminado = false) OR " +
 			"(examenes_laboratorio.id != '00000000-0000-0000-0000-000000000000' and examenes_laboratorio.terminado = false)" +
 			") ")
 

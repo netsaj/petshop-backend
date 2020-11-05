@@ -18,6 +18,7 @@ type Mascota struct {
 	Edad            float32   `gorm:"not null;'" validate:"gte=0" json:"edad"`
 	FechaNacimiento time.Time `gorm:"not null;" json:"fecha_nacimiento" `
 	RfidCardID      string    `json:"rfid_card_id"`
+	HistoriaClinica string    `json:"historia_clinica"`
 
 	Tercero Tercero `gorm:"foreignkey:TerceroID;association_foreignkey:ID" json:"tercero" validate:"-"`
 }

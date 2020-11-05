@@ -19,6 +19,8 @@ func FindByID(c echo.Context) error {
 		Joins("left join vacunaciones on vacunaciones.documento_id = documentos.id ").
 		Joins("left join desparasitaciones on desparasitaciones.documento_id = documentos.id ").
 		Joins("left join examenes_laboratorio on examenes_laboratorio.documento_id = documentos.id ").
+		Joins("left join historia_clinicas on historia_clinicas.documento_id = documentos.id ").
+		Preload("HistoriaClinica").
 		Preload("ExamenLaboratorio").
 		Preload("ExamenLaboratorio.ArchivosLaboratorio").
 		Preload("ExamenLaboratorio.ArchivosLaboratorio.Archivo").
@@ -38,6 +40,7 @@ func FindByID(c echo.Context) error {
 			"(peluqueadas.id != '00000000-0000-0000-0000-000000000000') OR " +
 			"(vacunaciones.id != '00000000-0000-0000-0000-000000000000') OR " +
 			"(desparasitaciones.id != '00000000-0000-0000-0000-000000000000') OR " +
+		    "(historia_clinicas.id != '00000000-0000-0000-0000-000000000000') OR " +
 			"(examenes_laboratorio.id != '00000000-0000-0000-0000-000000000000')" +
 			") ")
 

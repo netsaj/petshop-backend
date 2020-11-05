@@ -36,6 +36,7 @@ type Documento struct {
 	ExamenLaboratorio ExamenLaboratorio `validate:"-" gorm:"foreignkey:DocumentoID" json:"laboratorio,omitempty"`
 	Vacunacion        Vacunacion        `validate:"-" gorm:"foreignkey:DocumentoID" json:"vacunacion,omitempty"`
 	Desparasitacion   Desparasitacion   `validate:"-" gorm:"foreignkey:DocumentoID" json:"desparasitacion,omitempty"`
+	HistoriaClinica   HistoriaClinica   `validate:"-" gorm:"foreignkey:DocumentoID" json:"historiaclinica,omitempty"`
 	Usuario           Usuario           `validate:"-" gorm:"foreignkey:UsuarioID" json:"usuario,omitempty"`
 	Tercero           Tercero           `validate:"-" gorm:"foreignkey:TerceroID" json:"tercero,omitempty"`
 	Mascota           Mascota           `validate:"-" gorm:"foreignkey:MascotaID" json:"mascota,omitempty"`
@@ -57,6 +58,9 @@ func (d *Documento) calcularTotal() {
 	}
 	if !reflect.DeepEqual(d.ExamenLaboratorio, ExamenLaboratorio{}) {
 		d.Total += d.ExamenLaboratorio.Total
+	}
+	if !reflect.DeepEqual(d.HistoriaClinica, HistoriaClinica{}) {
+		d.Total += d.HistoriaClinica.Total
 	}
 }
 
@@ -148,6 +152,26 @@ func (d *Documento) CrearDocumentoServicio() error {
 	} else {
 		d.ExamenLaboratorio.Terminado = d.ServicioTerminado
 		db.Save(&d.ExamenLaboratorio).Find(&d.ExamenLaboratorio)
+	}
+
+	// HISTORIA CLINICA
+	if reflect.DeepEqual(d.HistoriaClinica, HistoriaClinica{}) {
+		fmt.Println("ignorando HistoriaClinica, estructura vacía")
+	} else {
+		d.HistoriaClinica.Terminado = d.ServicioTerminado
+		db.Save(&d.HistoriaClinica)
+
+		/*var calendario Calendario
+		db.Find(&calendario, "tipo = 'Peluquería' and documento_id = ?", d.ID)
+		fmt.Sprintf("Peluqueada id : %v", calendario.ID)
+		calendario.FechaAgendada = time.Now().Add(time.Duration(time.Hour * 24 * 60))
+		calendario.Tipo = "Peluquería"
+		calendario.TerceroID = d.TerceroID
+		calendario.MascotaID = d.MascotaID
+		calendario.Terminado = false
+		calendario.DocumentoID = d.ID
+		calendario.ObservacionesAbierto = "Observaciones en servicio anterior: " + d.Peluqueria.Observaciones
+		db.Save(&calendario)*/
 	}
 	spew.Println(&d)
 	return nil

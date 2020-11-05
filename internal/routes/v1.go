@@ -2,6 +2,7 @@ package routes
 
 import (
 	"github.com/labstack/echo"
+	"github/netsaj/petshop-backend/internal/controllers/historia_clinica_v1"
 
 	"github/netsaj/petshop-backend/internal/controllers/archivos_v1"
 	"github/netsaj/petshop-backend/internal/controllers/auth_v1"
@@ -111,4 +112,8 @@ func V1(e *echo.Echo) {
 	reportes := v1.Group("/reportes")
 	reportes.GET("/general", reportes_v1.ServiciosGlobal)
 	reportes.GET("/mascota/:id", reportes_v1.ReporteMascota)
+
+	// historia clinica
+	historia := v1.Group("/historiaclinica")
+	historia.POST("", historia_clinica_v1.Create)
 }
