@@ -12,11 +12,8 @@ import (
 	es_translation "github/netsaj/petshop-backend/internal/utils/translations/es"
 	"gopkg.in/go-playground/validator.v9"
 	"net/http"
-	"os"
 	"os/exec"
-	"path/filepath"
-	"strings"
-	"time"
+	"runtime"
 )
 
 var (
@@ -25,20 +22,16 @@ var (
 )
 
 func autoBackup() {
-	os.Setenv("PGPASSWORD", "linux")
-	currentTime := time.Now().Format(time.RFC3339)
-	currentTime = strings.Replace(currentTime, ":", "_", -1)
-	backupFile := filepath.FromSlash(fmt.Sprintf("backups/copia-seguridad-%s.backup",currentTime))
-	cmd := exec.Command("pg_dump", "--file ",
-		backupFile,
-		" --host \"localhost\" --port \"5432\" --username \"postgres\" --no-password --verbose --format=c --blobs --section=pre-data --section=data --section=post-data \"petshop\"\n")
-	fmt.Println(cmd.String())
-	cmd.Env = os.Environ()
-	cmd.Env = append(cmd.Env, "PGPASSWORD=linux")
-	err := cmd.Run()
-	if err != nil {
-		bytes, _ := cmd.StdoutPipe()
-		fmt.Println("BACKUP FAILED --- ", err, "... ", bytes)
+	if runtime.GOOS == "windows" {
+		fmt.Println("Hello from Windows")
+		cmd := exec.Command("cmd", "backups\\backup.bat")
+		out :=cmd.Run()
+		fmt.Println("BACKUP", out)
+	}else{
+		fmt.Println("Hello from unix")
+		cmd := exec.Command("/bin/sh", "./backups/backup.sh")
+		out :=cmd.Run()
+		fmt.Println("BACKUP", out)
 	}
 }
 
