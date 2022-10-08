@@ -24,13 +24,13 @@ var (
 func autoBackup() {
 	if runtime.GOOS == "windows" {
 		fmt.Println("Hello from Windows")
-		cmd := exec.Command("cmd", "/C","backups\\backup.bat")
-		out :=cmd.Run()
+		cmd := exec.Command("cmd", "/C", "backups\\backup.bat")
+		out := cmd.Run()
 		fmt.Println("BACKUP", out)
-	}else{
+	} else if runtime.GOOS == "linux" {
 		fmt.Println("Hello from unix")
 		cmd := exec.Command("/bin/sh", "./backups/backup.sh")
-		out :=cmd.Run()
+		out := cmd.Run()
 		fmt.Println("BACKUP", out)
 	}
 }

@@ -151,6 +151,9 @@ func (d *Documento) CrearDocumentoServicio() error {
 		fmt.Println("ignorando ExamenLaboratorio, estructura vacía")
 	} else {
 		d.ExamenLaboratorio.Terminado = d.ServicioTerminado
+		for _, archivo := range d.ExamenLaboratorio.ArchivosLaboratorio {
+			archivo.ID = fmt.Sprint(d.ID.String(), "_", archivo.ArchivoID.String())
+		}
 		db.Save(&d.ExamenLaboratorio).Find(&d.ExamenLaboratorio)
 	}
 

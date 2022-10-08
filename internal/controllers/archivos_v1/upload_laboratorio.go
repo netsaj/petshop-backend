@@ -62,6 +62,7 @@ func UploadFileLaboratorio(c echo.Context) error {
 	}
 	var ArchivoLab models.ArchivosLaboratorio
 	ArchivoLab.ArchivoID = Archivo.ID
+	ArchivoLab.ID = fmt.Sprint(ExamenLaboratorioID, "_", Archivo.ID)
 	ArchivoLab.ExamenLaboratorioID = ExamenLaboratorioID
 	if result := db.Save(&ArchivoLab); result.Error != nil {
 		return utils.ReturnError(result.Error, c)

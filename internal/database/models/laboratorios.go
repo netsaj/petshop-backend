@@ -18,7 +18,8 @@ func (ExamenLaboratorio) TableName() string {
 }
 
 type ArchivosLaboratorio struct {
-	ArchivoID           uuid.UUID         `gorm:"not null" json:"archivo_id"`
+	ID                  string            `gorm:"primary_key;" json:"id"`
+	ArchivoID           uuid.UUID         `gorm:"not null;" json:"archivo_id"`
 	ExamenLaboratorioID uuid.UUID         `gorm:"not null;" json:"examen_laboratorio_id"`
 	ExamenLaboratorio   ExamenLaboratorio `gorm:"foreignkey:ExamenLaboratorioID,association_foreignkey:ID" json:"examen_laboratorio"`
 	Archivo             Archivo           `gorm:"foreignkey:ArchivoID,association_foreignkey:ID" json:"archivo"`
